@@ -1,0 +1,1 @@
+const mivar = 0

@@ -1,0 +1,51 @@
+.rewiews {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin-top: -200px ;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 150px;
+  
+ 
+    
+}
+
+.image {
+   
+   height: auto;
+   width: auto;
+   
+}
+
+.title h1 {
+
+    color: var(--verde);
+    padding: 5px;
+    background-color: var(--amarillo);
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    
+}
+.title h2 {
+
+    color: var(--verde);
+    padding: 5px;
+    background-color: f9f9f9;
+    text-align: end;
+    font-size: 40px;
+    font-weight: bold;
+    
+}
+.title p {
+
+    color: var(--verde);
+    padding: 5px;
+    font-size: 22px;
+    text-align: justify;
+    color: black;
+    font-style: italic;
+    
+}

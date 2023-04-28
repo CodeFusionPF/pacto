@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Login from '@/pages/login';
 import EnConstruccion from '@/components/enConstruccion';
 import Slider from '@/components/slider';
+import Rewiews from '@/components/rewiewsEnConstruccion';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -12,6 +13,7 @@ export default function Home() {
     <>
       <Layout title="Home">
         <Slider />
+        <Rewiews/>
       </Layout>
     </>
   )

@@ -1,25 +1,38 @@
 
 import rewiews from "@/pages/api/rewiews";
+import { Button, Card, Carousel } from 'react-bootstrap';
+import { useState } from 'react';
+import style from '../styles/Rewiews.module.css';
 
-export default function Rewiews(){
+export default function Rewiews() {
 
-    return(
-        <div>
-            <h1>Rewiews de Nuestros Usuarios</h1>
-            {rewiews.map((item) =>(
-                <li key={item.id}>
-                     <h4>{item.name}</h4>
-                    <img key={item.image} src={item.image} width="100px" height="150px" />
-                   
-                    <p>{item.comment}</p>
-                </li>
-            ) )}
-        
-        
-        
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+    }
+
+    return (
+        <div className={style.rewiews}>
+
+            <Carousel activeIndex={index} onSelect={handleSelect}>
+                {rewiews.map((item) => (
+                    <Carousel.Item key={item.id}>
+                        <Card>
+                            <Card.Title className={style.title}><h1>Rewiews</h1></Card.Title>
+                            <Card.Img src={item.image} className={style.image}/>
+                            <Card.Body>
+                                <Card.Title className={style.title}><h2>{item.name}</h2></Card.Title>
+                                <Card.Text className={style.title}><p>{item.comment}</p></Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+
         </div>
-       
-    )
+
+    );
 
 }
 

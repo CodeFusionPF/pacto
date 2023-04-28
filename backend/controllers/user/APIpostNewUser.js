@@ -1,6 +1,6 @@
 //bcrypt es una libreria que se utiliza para encriptar y desencritpar contraseñas o texto
 const bcrypt = require('bcrypt');
-const {createUser} = require('../database/controllers/createUser')
+const {createUser} = require('../../database/controllers/DBUserCreate')
 
 //Si el nuevo usuario se postea esta funcion retornará al usuario en si, si no retorna false
 const postNewUser = (req, res) => {

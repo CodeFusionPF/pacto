@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 230px;
+  height: 100%;
+  max-height: 330px;
+  margin: 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.container:hover {
+  transform: scale(1.01);
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%; */
+  width: 200px; /*Cambiar a min-width*/
+  height: 200px; /*Cambiar a min-height*/
+  overflow: hidden;
+  border-radius: 12.5px;
+  filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.25));
+  background-color: var(--verde);
+}
+
+.imgContainer img {
+  width: 100%;
+  height: auto;
+}
+
+.infoContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 200px;
+  max-height: 110px;
+  border-radius: 5px;
+  background-color: white;
+  filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.15));
+  color: var(--rosa);
+  margin: -1.5rem 1rem -1.5rem 1rem;
+  transition: all 0.2s ease-in-out;
+}
+.infoContainer:hover {
+  transform: scale(1.03);
+}
+
+.infoContainer p {
+  font-size: 18px;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
+.nameContainer {
+  width: 100%;
+  min-width: 0; /* Necesario para que funcione ellipsis en el nombre */
+}
+
+.nameContainer p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin: 1rem 0.5rem 0 0.5rem;
+}

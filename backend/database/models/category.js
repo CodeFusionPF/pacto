@@ -216,4 +216,4 @@ const createMainCategories = async () => {
 
 }
 
-module.exports = createMainCategories
+module.exports = { createMainCategories, Category }

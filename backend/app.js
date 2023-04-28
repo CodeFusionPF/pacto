@@ -27,16 +27,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
-//Get all users
-app.use('/users', usersRouter);
-//Post new user
-app.use('/user', usersRouter)
+//All routes of the users!!!
+app.use(usersRouter);
 
-//Get all products
-//app.use(productsRouter)
-//Post new products
+
+//All routes of the products!!
 app.use(productsRouter)
-app.use(productsRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -2,15 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 35px;
+    height: 50px;
     width: 377px;
     padding-top: 1rem;
 }
   
 .input {
-    max-width: 377px;
-    width: 377px;
-    height: 50%;
+    
+    width: 320px;
+    min-width: 30px;
+    height: 100%;
     outline: none;
     font-size: 14px;
     font-weight: 500;
@@ -51,10 +52,23 @@
   }
 
 
-  @media (max-width: 980px){
-    
+@media (max-width: 980px){
     .container{
       margin-bottom: .3rem;
-    }
-
+      width: 60vw;
+      margin-left: .8rem;
+      
+    } 
 }
+@media (max-width: 980px){
+    
+  .container{
+    margin-bottom: .3rem;
+    min-width: 40px;
+    margin-left: .8rem;
+    
+  }
+
+  
+}
+

@@ -3,13 +3,13 @@
     left: 0;
     top: 0rem;
     background-color: var(--blanco);
-    width: 200px;
+    width: 240px;
     height: 100vh;
     padding: 25px;
     box-shadow: 0 0 10px var(--negro);
     display: flex;
     flex-direction: column;
-
+    z-index: 999;
     
 }
 

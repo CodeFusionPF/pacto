@@ -1,4 +1,4 @@
-const {checkUserExists} = require('../database/helper/checkUserExists');
+const {checkUserExists} = require('../../database/helper/DBcheckUserExists');
 
 const getUserById = (req, res) => {
 

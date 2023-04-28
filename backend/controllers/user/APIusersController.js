@@ -1,9 +1,8 @@
 //bcrypt es una libreria que se utiliza para encriptar y desencritpar contraseñas o texto
 const bcrypt = require('bcrypt');
-//Aun no existe, esperando para continuar con esta sección
-const {createUser} = require('../database/controllers/createUser');
-const {checkUserExists} = require('../database/helper/checkUserExists');
+const {checkUserExists} = require('../../database/helper/DBcheckUserExists');
 
+//ESTE ARCHIVO PROXIMAMENTE SERÁ ELIMINADO!!!!
 
 const getAllUsers = (req, res) => {
 

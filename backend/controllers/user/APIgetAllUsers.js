@@ -1,6 +1,4 @@
 const getAllUsers = (req, res) => {
-
-    
     try{
 
         const users = "Aca va la función de traer todos los usuarios";

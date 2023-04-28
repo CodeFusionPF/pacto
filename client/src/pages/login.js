@@ -2,9 +2,38 @@ import Head from "next/head"
 import Link from "next/link"
 import Image from "next/image"
 import style from "../styles/Login.module.css"
+import { useDispatch } from "react-redux"
+import { useState } from "react"
 
 
 export default function login(){
+    const dispatch = useDispatch()
+
+    const [signIn,setSignIn] = useState({
+        email:'',
+        password:'',
+
+    });
+
+    const handleChange = (event)=>{
+        const {name, value} = event.target;
+        console.log(name,value);
+        setSignIn({
+            ...signIn,
+            [name]:value
+        })
+    }
+
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+        setSignIn({
+            ...signIn,
+            email:'',
+            password:'',
+        })
+
+    }
+
 
     return (
         <div className= {style.login}>
@@ -30,14 +59,14 @@ export default function login(){
                 </div>
 
                 
-                    <form className={style.form__Login}>
+                    <form className={style.form__Login} onSubmit={handleSubmit}>
                         <label>Email:</label>
-                        <input type="email" placeholder="Email" />
+                        <input onChange={(e)=> handleChange(e)} value={signIn.email}  name={"email"} type="email" placeholder="Email" />
 
                         <label>Contraseña:</label>
-                        <input type="password" placeholder="Contraseña" />
+                        <input onChange={(e)=> handleChange(e)} value={signIn.password} name={"password"} type="password" placeholder="Contraseña" />
 
-                        <button>Iniciar Sesión</button>
+                        <button type="submit">Iniciar Sesión</button>
                     </form>
                     <Link href="/forgotpass">
                         <span className={style.forgetPass}>¿Olvidaste tu contraseña?</span>

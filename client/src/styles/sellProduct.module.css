@@ -1,0 +1,127 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.logo{
+    display: flex;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.titleProdut h1{
+    font-size: 20px;
+    text-align: center;
+}
+
+.titleProdut p{
+    font-size: 12px;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.titleProdut span{
+    color: var(--rosa);
+    align-items: center;
+    margin-left: 10px;
+}
+
+.formProduct {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+    margin: 20px 30px
+}
+
+.formProduct input{
+    padding: 10px;
+    border: 1px solid var(--verde);
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.formProduct textarea{
+    padding: 10px;
+    border: 1px solid var(--verde);
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.formProduct select{
+    padding: 10px;
+    border: 1px solid var(--verde);
+    border-radius: 5px;
+    outline: none;
+}
+
+.formProduct input:focus{
+    border: 1px solid var(--gris);
+}
+
+.statusProduct{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.buttonCancel, .buttonSubmit{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: var(--verde);
+    color: var(--blanco);
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    margin: 0 10px;
+}
+
+.photo{
+    padding: 10px;
+    border: 1px solid var(--verde);
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+/* media queries */
+
+@media (min-width: 768px) { 
+    .formProduct{
+        width: 70%;
+        margin: 20px auto;
+    }
+
+    .statusProduct{
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 5px;
+    }
+
+    .statusProduct label{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .photo{
+        width: 50%;
+    }
+
+}
+
+@media (min-width: 1024px) { 
+    .formProduct{
+        width: 50%;
+    }
+}
+

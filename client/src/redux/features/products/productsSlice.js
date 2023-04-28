@@ -1,17 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-    items: [],
-  }
+  items: [],
+};
+
+// esta funcion la intente con el modulo thunk
+export const fetchProducts =  async () => {
+  
+}
 
 const productsSlice = createSlice({
-    name:'products',
-    initialState,
-    reducers:{
-        //actions
-    }
-})
+  name: "products",
+  initialState,
+  reducers: {
+    addProducts: (state, action) => {
+       state.items = action.payload;
+    },
+
+    //actions
+  },
+});
 
 //actions
-//export const { } = productsSlice.actions
-export default productsSlice.reducer
+export const { addProducts } = productsSlice.actions;
+export default productsSlice.reducer;

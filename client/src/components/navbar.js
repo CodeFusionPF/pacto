@@ -37,14 +37,16 @@ export default function NavBar(){
                     <button className={style.btn}>Nosotros</button>
                     <button className={style.btn}>Categorias</button>
                     <button className={style.btn}>Ofertas</button>
-                    <button className={style.btn}>Vender</button>
+                    <Link href="/sellProduct">
+                        <button className={style.btn}>Vender</button>
+                    </Link>
                     <button className={style.btn}>¿Necesitas ayuda?</button>
                     </div>
                     }
             </div>
 
             <div className={style.user}>
-                <button>
+                <button className={style.red}>
                     <Link href="/login">
                         <Image priority src="/image/user.svg" alt="user" width="35" height="35"/>
                     </Link>

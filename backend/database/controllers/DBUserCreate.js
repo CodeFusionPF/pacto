@@ -1,5 +1,4 @@
-const { User } = require("../schemas/userSchema")
-
+const User = require("../models/user")
 
 const createUser = async (user) => {
     try {

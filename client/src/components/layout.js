@@ -6,6 +6,7 @@ import Rewiews from "./rewiewsEnConstruccion"
 
 
 export default function Layout({ children, title}){
+    
 
     return (
         <>

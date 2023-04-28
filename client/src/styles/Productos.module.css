@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 100%;
+  min-height: 80vh;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--rosa);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  min-height: 80vh;
+  min-width: 100%;
+}
+
+.filterPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 380px;
+  min-height: 80vh;
+  margin-right: 2rem;
+  background-color: var(--gris-claro);
+}
+
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}

@@ -1,5 +1,6 @@
-const { Product } = require("../mongoose");
-const { User } = require("../mongoose")
+const Product = require("../models/product")
+const User = require("../models/user")
+
 
 const productSave = async (product, idUser) => {
     const newProduct = new Product(product)

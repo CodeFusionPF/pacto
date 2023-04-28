@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Login from '@/pages/login';
 import EnConstruccion from '@/components/enConstruccion';
 import Slider from '@/components/slider';
-import Rewiews from '@/components/rewiewsEnConstruccion';
+import Rewiews from '@/components/rewiews'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

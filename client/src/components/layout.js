@@ -1,6 +1,7 @@
 import Head from "next/head"
 import NavBar from "./navbar"
 import Menu from "./menu"
+import Rewiews from "./rewiewsEnConstruccion"
 // import style from "../styles/Layout.module.css";
 
 
@@ -18,6 +19,7 @@ export default function Layout({ children, title}){
             <Menu/>
 
             <NavBar/>
+
 
             <div>{children}</div>
 

@@ -16,7 +16,7 @@ const login = async (req, res) =>{
             const {email, password} = req.body;
 
             if (email && password){
-                const user = await checkUserExists(email);
+                const user = await checkUserExists(null, email);
                 //Verifico que el usuario ingresado exista en la db
                 if (user){
 
@@ -28,8 +28,8 @@ const login = async (req, res) =>{
                     if (user.verified){
 
                         //Checkeo si la contraseña ingresada coincide con la almacenada en la db
-                        if (bcrypt.compare(password, user.password)){
-
+                        if (await bcrypt.compare(password, user.password)){
+                          
                              /*Genero el token asociado al id del usuario, dejo comentado el tiempo de expiracion del token 
                             (Por tema de seguridad deberia estar activado pero tenemos que determinar el tiempo que pondremos para que expire)*/
                             token = generateNewtoken(user._id);

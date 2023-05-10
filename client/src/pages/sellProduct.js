@@ -137,7 +137,7 @@ export default function sellProduct(){
         }));
       
         // Actualizar el estado del producto con las imágenes seleccionadas
-        if (type === "file") {
+        if (type === "file" && errorMessage === "") {
             setProduct((prevData) => ({
                 ...prevData,
                 [name]: [...product.images, ...files],
@@ -147,6 +147,8 @@ export default function sellProduct(){
             const filesArray = Array.from(files);
             const filesURL = filesArray.map(file => URL.createObjectURL(file));
             setPreviews([...previews, ...filesURL]);
+        } else if (type === "file" && errorMessage !== "") {
+            e.target.value = "";
         } else {
             setProduct((prevData) => ({
                 ...prevData,
@@ -157,14 +159,14 @@ export default function sellProduct(){
 
     //********************************************************************* */
     // TO-DO: terminar de implementar la funcionalidad de eliminar la imagen
-    // const removeImage = (index) => {
-    //     setProduct((prevState) => {
-    //       const newImages = prevState.images.filter((_, i) => i !== index);
-    //       return { ...prevState, images: newImages };
-    //     });
+    const removeImage = (index) => {
+        setProduct((prevState) => {
+          const newImages = prevState.images.filter((_, i) => i !== index);
+          return { ...prevState, images: newImages };
+        });
       
-    //     setPreviews((prevState) => prevState.filter((_, i) => i !== index));
-    // };
+        setPreviews((prevState) => prevState.filter((_, i) => i !== index));
+    };
     //********************************************************************** */
 
     // Función para gestionar el cambio de categoría
@@ -323,10 +325,7 @@ export default function sellProduct(){
       };
       
       const validateImages = (files) => {
-        if (validation.images.required && (!files || files.length === 0)) {
-          return "Al menos una imagen es requerida.";
-        }
-        if (files.length > validation.images.maxFiles) {
+        if (product.images.length + files.length > validation.images.maxFiles) {
           return `No se pueden subir más de ${validation.images.maxFiles} imágenes.`;
         }
         for (let file of files) {
@@ -500,18 +499,24 @@ export default function sellProduct(){
                         <div className={style.formSection}>
                             <h3>Cargar Fotos</h3>
                             <hr />
-                            <label htmlFor="images">{"Selecciona hasta 4 fotos"}</label>
+                            <p className={style.infoSmall}>Formatos admitidos: .jpg o.png</p>
                             <input className={style.photoSelector} 
                             type="file" 
                             id="images" 
                             name="images" 
                             accept=".jpg, .jpeg, .png" 
                             onChange={handleChange} 
+                            disabled={product.images.length >= validation.images.maxFiles}
                             multiple 
                             />
-                            <p className={style.infoSmall}>Formatos admitidos: .jpg o.png</p>
+                            <label htmlFor="images" className={style.photoSelectorLabel}>{`Selecciona hasta ${validation.images.maxFiles} fotos`}</label>
+                            
                             {
                                 formErrors.images && <p className={style.errorMessage}>{formErrors.images}</p>
+                            }
+                            {
+                                validation.images.required && (product.images.length === 0) 
+                                && <p className={style.errorMessage}>Al menos una foto es requerida.</p> 
                             }
 
                             {/* Sección para previsualizar las imágenes seleccionadas */}
@@ -524,7 +529,7 @@ export default function sellProduct(){
                                                 type="button"
                                                 className={style.removeImageButton}
                                                 // TO-DO: terminar de implementar la funcionalidad de eliminar la imagen
-                                                // onClick={() => removeImage(index)}
+                                                onClick={() => removeImage(index)}
                                             >
                                             X
                                             </button>
@@ -550,6 +555,11 @@ export default function sellProduct(){
                             </button>
 
                             <button className={style.buttonCancel} type="reset" onClick={handleCancel}>Cancelar</button>
+                        </div>
+                        <div className={style.alertInfo} >
+                          { 
+                            (!isFormComplete() || Object.values(formErrors).some((error) => error)) && <p>Todos los datos deben estar completos y correctos para poder publicar tu producto</p>
+                          }        
                         </div>
                     </form>
                 </div>

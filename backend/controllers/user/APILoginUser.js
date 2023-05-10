@@ -45,7 +45,7 @@ const login = async (req, res) =>{
                     }
                     
                     token = generateNewtoken(user._id);
-                    const codeSend = await DBUserVerified(user.email);
+                    const codeSend = await DBUserVerified(user.email, null);
 
                     return res.status(401).json({msg: "Credenciales del usuario validas pero no esta verificado!",
                                                 verified: false,

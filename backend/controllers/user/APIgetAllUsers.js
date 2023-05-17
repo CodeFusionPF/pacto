@@ -26,10 +26,10 @@ const getAllUsers = async (req, res) => {
             }
 
             const totalUsers = users.length;
-            const indexLastProd = page * amountXPage;
-            const indexFirstProd = indexLastProd - amountXPage;
+            const indexLastUser = page * amountXPage;
+            const indexFirstUser = indexLastUser - amountXPage;
 
-            users.slice(indexFirstProd, indexLastProd);
+            users.slice(indexFirstUser, indexLastUser);
 
             return res.status(200).json({totalUsers, users});
         }

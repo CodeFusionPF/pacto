@@ -4,10 +4,16 @@ const postReview = async (req, res) => {
 
     try{
 
-        const {idUser, review, idVendor}  = req.body;
+        const {calification, review, state, client, vendor}  = req.body;
 
-        if (review){
-            const response = await DBReviewPost(idUser, review, idVendor);
+        const info = {
+                calification : calification,
+                review: review
+        }
+
+        console.log(info)
+        if (info){
+            const response = await DBReviewPost(client, info, vendor);
 
             if (response){
                 return res.status(200).json({msg: "Review creada con exito!",

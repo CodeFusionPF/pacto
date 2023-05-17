@@ -92,7 +92,9 @@ function ProductsList() {
                             
                             return (
                                 <li key={index} 
-                                className='bg-gray-100 hover:bg-gray-50 rounded-lg my-3 px-2 py-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-x-2 items-center justify-between '
+                                className={`rounded-lg my-3 px-2 py-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-x-2 items-center justify-between 
+                                ${product.active === "bloqueado" ? "bg-red-100 hover:bg-red-50" : "bg-gray-100 hover:bg-gray-50"}
+                                `}
                                 >
                                     
                                     {/* Nombre */}

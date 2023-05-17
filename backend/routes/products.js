@@ -8,12 +8,16 @@ const {getProductsByFilters} = require('../controllers/product/APIgetProductByFi
 const getProductByName = require('../controllers/product/APIgetProductByName');
 const middlewarePostNewProduct = require('../middlewares/productMiddleware');
 const {autoLogin} = require('../middlewares/autoLoginMiddleware');
+const {getAllProductsAdmin} = require('../controllers/product/APIAdminGetAllProds');
+const {checkIsAdmin} = require('../middlewares/checkAdminMiddleware');
 
 // GET all products
 //router.get('/products', (req, res, next) => getAllProducts(req, res));
 
 //La funcion getProductsByFilters trae todos los productos si se manda un query por defecto
-router.get('/products', (req, res, next) => getProductsByFilters(req, res))
+router.get('/products', (req, res, next) => getProductsByFilters(req, res));
+
+router.get('/adminproducts', checkIsAdmin, (req, res) => {getAllProductsAdmin(req, res)});
 
 //GET Product by id
 router.get('/product', (req, res, next) => getProductById(req, res));

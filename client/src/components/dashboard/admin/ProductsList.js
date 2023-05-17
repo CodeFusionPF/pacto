@@ -58,7 +58,6 @@ function ProductsList() {
 
     const handleConfirmBlock = async () => {
         try {
-            // TODAVÍA NO ESTÁ IMPLEMENTADO (hay que crear el endpoint en el backend)
             const response = await banProduct(selectedProd);
             router.reload();
         } catch (error) {
@@ -145,7 +144,7 @@ function ProductsList() {
                                             <Modal
                                             // PROVISORIAMENTE DESHABILITADO,hasta terminar de desarrollar el endpoint en el backend
                                             // onConfirm={handleConfirmBlock}
-                                            onConfirm={() => setModalOpen(false)}
+                                            onConfirm={handleConfirmBlock}
                                             onClose={() => setModalOpen(false)}
                                             message={`¿Estás seguro de que quieres ${selectedProd.active === "bloqueado" ? "DESBLOQUEAR" : "BLOQUEAR"} el producto ${selectedProd.name}?`}
                                             />

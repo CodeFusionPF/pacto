@@ -7,7 +7,7 @@ const getSaleByIdDB = async (id) => {
             .populate("products.product", ["name", "state", "price"])
 
             .lean()
-        console.log(order.products)
+        //console.log(order.products)
         if (order === null) {
             return false
         }

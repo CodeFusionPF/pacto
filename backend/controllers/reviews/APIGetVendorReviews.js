@@ -11,7 +11,7 @@ const getAllVendorReviews = async (req, res) => {
            
 
             if (reviews){   
-                const totalReviews = reviews.length;
+                const totalReviews = reviews.reviewReceived.length;
                 const indexLastRev = page * amountXPage;
                 const indexFirstRev = indexLastRev - amountXPage;
                

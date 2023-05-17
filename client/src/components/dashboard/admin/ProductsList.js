@@ -58,7 +58,6 @@ function ProductsList() {
 
     const handleConfirmBlock = async () => {
         try {
-            // TODAVÍA NO ESTÁ IMPLEMENTADO (hay que crear el endpoint en el backend)
             const response = await banProduct(selectedProd);
             router.reload();
         } catch (error) {
@@ -93,7 +92,9 @@ function ProductsList() {
                             
                             return (
                                 <li key={index} 
-                                className='bg-gray-100 hover:bg-gray-200 rounded-lg my-3 px-2 py-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-x-2 items-center justify-between '
+                                className={`rounded-lg my-3 px-2 py-4 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-x-2 items-center justify-between 
+                                ${product.active === "bloqueado" ? "bg-red-100 hover:bg-red-50" : "bg-gray-100 hover:bg-gray-50"}
+                                `}
                                 >
                                     
                                     {/* Nombre */}
@@ -120,16 +121,21 @@ function ProductsList() {
                                     <div className='flex items-center md:items-start justify-center col-span-1 sm:col-span-4 md:col-span-1 mt-2'>
                                         <button 
                                         className='
-                                            bg-verde hover:bg-verde-light text-white font-semibold text-sm
-                                            py-1 px-2 mx-1 w-24 sm:max-w-md
-                                            rounded-md cursor-pointer'
+                                            bg-gray-100 hover:bg-verde text-verde-dark hover:text-white 
+                                            rounded-md border-2 border-verde
+                                            font-semibold text-sm
+                                            w-24 sm:max-w-md py-1 px-2 mx-1 
+                                            shadow-sm cursor-pointer'
                                         onClick={() => handleDetails(product._id)}
                                         >
                                             Detalle
                                         </button>
                                         <button 
-                                        className='bg-rose-500 hover:bg-rose-400 text-white font-semibold 
-                                        py-1 px-2 w-24 rounded-md cursor-pointer mx-1 text-sm'
+                                        className='
+                                            bg-gray-100 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold text-sm 
+                                            rounded-md border-2 border-rose-400 hover:border-rose-500 
+                                            w-24 sm:max-w-md py-1 px-2 mx-1
+                                            shadow-sm cursor-pointer'
                                         onClick={() => handleBlock(product)}
                                         >
                                             {product.active === "bloqueado" ? "Desbloquear" : "Bloquear"}
@@ -140,7 +146,7 @@ function ProductsList() {
                                             <Modal
                                             // PROVISORIAMENTE DESHABILITADO,hasta terminar de desarrollar el endpoint en el backend
                                             // onConfirm={handleConfirmBlock}
-                                            onConfirm={() => setModalOpen(false)}
+                                            onConfirm={handleConfirmBlock}
                                             onClose={() => setModalOpen(false)}
                                             message={`¿Estás seguro de que quieres ${selectedProd.active === "bloqueado" ? "DESBLOQUEAR" : "BLOQUEAR"} el producto ${selectedProd.name}?`}
                                             />

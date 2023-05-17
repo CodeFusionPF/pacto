@@ -25,7 +25,7 @@ export const getProductsByPage = async (page) => {
 // Función para banear producto
 export const banProduct = async (id) => {
   try {
-      const response = await axios.put(`/banproduct`, { "id": id });
+      const response = await axios.put(`/product`, { "id": id });
       return response.data;
   } catch (error) {
       console.error('Error al bloquear producto:', error);

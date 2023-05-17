@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { BsPersonFill } from 'react-icons/bs';
+import { HiKey } from 'react-icons/hi';
 // Mock data
 // import { users } from "../../../utils/dashboard/admin/data";
 import { banUser, getAllUsers } from "../../../api/usersApi";
@@ -36,6 +37,7 @@ function UsersList() {
         };
 
         fetchUsers();
+        console.log(users);
     }, [currentPage]);
 
 
@@ -91,8 +93,8 @@ function UsersList() {
                         users?.map((user, index) => {
                             // Convertir la fecha a hora local
                             let local = null;
-                            if (user.dateRegister) {
-                                const utc = new Date(user.dateRegister);
+                            if (user.registrationdate) {
+                                const utc = new Date(user.registrationdate);
                                 const offset = utc.getTimezoneOffset();
                                 local = new Date(utc.getTime() + (offset*60*1000));
                             }
@@ -108,17 +110,34 @@ function UsersList() {
                                         className={
                                             `p-3 rounded-full sm:rounded-lg mb-2 sm:mb-0
                                             ${
-                                                user.state ? 'bg-green-100' 
-                                                : 'bg-red-100'
+                                                user.state === "activo" ? 'bg-green-100' 
+                                                : user.state === "bloqueado" ? 'bg-red-100'
+                                                : 'bg-gray-100'
                                             }`
                                         }
                                         >
-                                            <BsPersonFill 
-                                            className={
-                                                user.state ? 'text-verde' 
-                                                : 'text-red-400'
-                                            } 
-                                            />
+                                            {/* Renderizado condicional de ícono según rol y estado */}
+                                            {
+                                                user.role?.role === 'admin' ? 
+                                                    <HiKey size={20} 
+                                                    title='Administrador'
+                                                    className={`
+                                                        text-4xl
+                                                        ${ user.state === "activo" ? 'text-verde' 
+                                                        : user.state === "bloqueado" ? 'text-red-400'
+                                                        : 'text-gray-400'}`
+                                                    } 
+                                                    />
+                                                :   <BsPersonFill size={20} 
+                                                    title='Usuario'
+                                                    className={`
+                                                        text-4xl
+                                                        ${ user.state === "activo" ? 'text-verde' 
+                                                        : user.state === "bloqueado" ? 'text-red-400'
+                                                        : 'text-gray-400'}`
+                                                    } 
+                                                    />
+                                            }
                                         </div>
                                         <p className='font-medium text-center sm:pl-4'>{user.firstname + " " + user.lastname}</p>
                                     </div>
@@ -144,12 +163,15 @@ function UsersList() {
                                         <span className={`
                                         text-sm font-semibold w-fit py-1
                                         ${
-                                            user.state ? 'text-verde' 
-                                            : 'text-red-500'
+                                            user.state === "activo" ? 'text-verde' 
+                                            : user.state === "bloqueado" ? 'text-red-500'
+                                            : 'text-gray-400'
                                         }
                                         `}
                                         >
-                                            {user.state ? "✔ Activo" : "⨯ Bloqueado"}
+                                            {user.state === "activo" ? "✔ Activo" 
+                                            : user.state === "bloqueado" ? "⨯ Bloqueado"
+                                            : "⨯ Desactivado"}
                                         </span>
                                     </p>
 
@@ -164,19 +186,27 @@ function UsersList() {
                                     <div className='flex items-center justify-center col-span-1 sm:col-span-4 md:col-span-1 mt-2'>
                                         <button 
                                         className='
-                                            bg-verde hover:bg-verde-light text-white font-semibold text-sm
-                                            py-1 px-2 mx-1 w-24 sm:max-w-md
-                                            rounded-md cursor-pointer'
+                                            bg-gray-100 hover:bg-verde text-verde-dark hover:text-white 
+                                            rounded-md border-2 border-verde
+                                            font-semibold text-sm
+                                            w-24 sm:max-w-md py-1 px-2 mx-1 
+                                            shadow-sm cursor-pointer'
                                         onClick={() => handleDetails(user._id)}
                                         >
                                             Perfil
                                         </button>
                                         <button 
-                                        className='bg-rose-500 hover:bg-rose-400 text-white font-semibold 
-                                        py-1 px-2 w-24 rounded-md cursor-pointer mx-1 text-sm'
+                                        className='
+                                            bg-gray-100 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold text-sm 
+                                            rounded-md border-2 border-rose-400 hover:border-rose-500 
+                                            w-24 sm:max-w-md py-1 px-2 mx-1
+                                            shadow-sm cursor-pointer
+                                            disabled:text-gray-400 disabled:border-gray-400 disabled:bg-gray-100 disabled:cursor-not-allowed '
                                         onClick={() => handleBlock(user)}
+                                        // No se puede bloquear o activar a un usuario desactivado
+                                        disabled={user.state === "desactivado"}
                                         >
-                                            {user.state ? "Bloquear" : "Desbloquear"}
+                                            {user.state === "activo" || user.state === "desactivado" ? "Bloquear" : "Desbloquear"}
                                         </button>
                                     </div>
                                     {

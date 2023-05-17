@@ -1,9 +1,15 @@
 const Product = require("../../../../models/product");
 
-const getProductsAll = async () => {
+const getProductsAll = async (admin = false) => {
 
   try {
-    const res = await Product.find({ active: "en venta" }).lean();
+    let res = await Product.find({ active: "en venta" }).lean();
+    if (!admin){
+      res = await Product.find({ active: "en venta" }).lean();
+    } else{
+      res = await Product.find().lean();
+    }
+    
     return res;
   } catch (err) {
     throw new Error(`Error al obtener los productos: ${err}`);

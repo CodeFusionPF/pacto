@@ -10,11 +10,12 @@ const logicBanUser = async (req, res) => {
 
         if (user){
 
-            if (user.state) {
-                user.state = false;
-            } else{
-                user.state = true;
+            if (user.state === "activo" || user.state === "desactivado") {
+                user.state = "bloqueado";
+            } else {
+                user.state = "activo";
             }
+
 
            
             user.save();

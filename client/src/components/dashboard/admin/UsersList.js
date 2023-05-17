@@ -37,6 +37,7 @@ function UsersList() {
         };
 
         fetchUsers();
+        console.log(users);
     }, [currentPage]);
 
 
@@ -92,8 +93,8 @@ function UsersList() {
                         users?.map((user, index) => {
                             // Convertir la fecha a hora local
                             let local = null;
-                            if (user.dateRegister) {
-                                const utc = new Date(user.dateRegister);
+                            if (user.registrationdate) {
+                                const utc = new Date(user.registrationdate);
                                 const offset = utc.getTimezoneOffset();
                                 local = new Date(utc.getTime() + (offset*60*1000));
                             }
@@ -109,25 +110,31 @@ function UsersList() {
                                         className={
                                             `p-3 rounded-full sm:rounded-lg mb-2 sm:mb-0
                                             ${
-                                                user.state ? 'bg-green-100' 
-                                                : 'bg-red-100'
+                                                user.state === "activo" ? 'bg-green-100' 
+                                                : user.state === "bloqueado" ? 'bg-red-100'
+                                                : 'bg-gray-100'
                                             }`
                                         }
                                         >
+                                            {/* Renderizado condicional de ícono según rol y estado */}
                                             {
-                                                user.role === 'admin' ? 
+                                                user.role?.role === 'admin' ? 
                                                     <HiKey size={20} 
                                                     title='Administrador'
                                                     className={`
                                                         text-4xl
-                                                        ${ user.state ? 'text-verde' : 'text-red-400'}`
+                                                        ${ user.state === "activo" ? 'text-verde' 
+                                                        : user.state === "bloqueado" ? 'text-red-400'
+                                                        : 'text-gray-400'}`
                                                     } 
                                                     />
                                                 :   <BsPersonFill size={20} 
                                                     title='Usuario'
                                                     className={`
                                                         text-4xl
-                                                        ${ user.state ? 'text-verde' : 'text-red-400'}`
+                                                        ${ user.state === "activo" ? 'text-verde' 
+                                                        : user.state === "bloqueado" ? 'text-red-400'
+                                                        : 'text-gray-400'}`
                                                     } 
                                                     />
                                             }
@@ -156,12 +163,15 @@ function UsersList() {
                                         <span className={`
                                         text-sm font-semibold w-fit py-1
                                         ${
-                                            user.state ? 'text-verde' 
-                                            : 'text-red-500'
+                                            user.state === "activo" ? 'text-verde' 
+                                            : user.state === "bloqueado" ? 'text-red-500'
+                                            : 'text-gray-400'
                                         }
                                         `}
                                         >
-                                            {user.state ? "✔ Activo" : "⨯ Bloqueado"}
+                                            {user.state === "activo" ? "✔ Activo" 
+                                            : user.state === "bloqueado" ? "⨯ Bloqueado"
+                                            : "⨯ Desactivado"}
                                         </span>
                                     </p>
 
@@ -190,10 +200,13 @@ function UsersList() {
                                             bg-gray-100 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold text-sm 
                                             rounded-md border-2 border-rose-400 hover:border-rose-500 
                                             w-24 sm:max-w-md py-1 px-2 mx-1
-                                            shadow-sm cursor-pointer'
+                                            shadow-sm cursor-pointer
+                                            disabled:text-gray-400 disabled:border-gray-400 disabled:bg-gray-100 disabled:cursor-not-allowed '
                                         onClick={() => handleBlock(user)}
+                                        // No se puede bloquear o activar a un usuario desactivado
+                                        disabled={user.state === "desactivado"}
                                         >
-                                            {user.state ? "Bloquear" : "Desbloquear"}
+                                            {user.state === "activo" || user.state === "desactivado" ? "Bloquear" : "Desbloquear"}
                                         </button>
                                     </div>
                                     {

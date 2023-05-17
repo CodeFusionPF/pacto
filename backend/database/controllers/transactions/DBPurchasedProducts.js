@@ -44,7 +44,7 @@ const DBPurchasedProducts = async (idUser) => {
         shoppingCartProducts.purchased.push(newOrder._id)
         LogAdminController(newOrder._id, shoppingCartProducts.shoppingCart.totalprice, "balance")
         shoppingCartProducts.shoppingCart = {}
-
+        newOrder.creationdate = new Date()
         const response = await newOrder.save()
         shoppingCartProducts.save()
         return response

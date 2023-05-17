@@ -3,12 +3,21 @@ const getAllSalesDB = require('../../database/controllers/sales/DBGetAllSales');
 const getAllSales = async (req, res) => {
 
     try{
+        const {page} = req.query;
+
         const sales = await getAllSalesDB();
+        const totalOrders = sales.length;
+        const amountXPage = 20;
 
         if (sales){
+
+            const indexLastOrder = page * amountXPage;
+            const indexFirstOrder = indexLastOrder - amountXPage;
+            sales = sales.slice(indexFirstOrder, indexLastOrder);
+            
             return res.status(200).json({
-                msg: "Ventas traidas con exito!",
-                sales
+                totalOrders,
+                ordersList: sales
             });
         }
 

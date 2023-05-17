@@ -6,6 +6,7 @@ const getAllSalesDB = async () => {
         const orders = Order.find()
                         .populate("users.user", ["firstname", "lastname"])
                         .populate("products.product", ["name", "price"])
+                        .order('-creationdate')
                         .lean();
 
         return orders;

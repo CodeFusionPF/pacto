@@ -2,7 +2,7 @@ const getAllUsersDB = require('../../database/controllers/users/userGet/DBAllUse
 
 //Array que contendrá las keys que se permitiran en el json de user
 //registerDate está comentado ya que todavía no existe en el schema de usuarios
-const allowedKeys  = ["_id", "firstname", "lastname", "verified", "role", "state", "email" /*, registerDate*/ ];
+const allowedKeys  = ["_id", "firstname", "lastname", "verified", "role", "state", "email" , "registrationdate" ];
 
 const getAllUsers = async (req, res) => {
     try{

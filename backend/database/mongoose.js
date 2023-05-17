@@ -22,8 +22,8 @@ const getSaleByIdDB = require("./controllers/sales/DBGetSaleById");
 
 // REVISAR ARCHIVO ENV EN DRIVE PARA TENER CREDENCIALES DE ACCESO 
 const { MONGO_DB_URI } = process.env
-//mongoose.connect(MONGO_DB_URI);
-mongoose.connect("mongodb://127.0.0.1:27017/marketplace")
+mongoose.connect(MONGO_DB_URI);
+//mongoose.connect("mongodb://127.0.0.1:27017/marketplace")
 
 mongoose.connection.on("open", (_) => {
   console.log("Database is connected to Atlas");

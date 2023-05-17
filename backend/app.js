@@ -19,6 +19,7 @@ const departmentsRouter = require('./routes/departments');
 const salesRouter = require('./routes/sales');
 const transactionsRouter = require('./routes/transactions')
 const questionsRouter = require('./routes/questions');
+const reviewsRouter = require('./routes/reviews');
 
 
 //CONEXION A LA DB!!!
@@ -73,6 +74,9 @@ app.use(questionsRouter);
 
 //Routes of transactions
 app.use(transactionsRouter);
+
+//Routes of reviews
+app.use(reviewsRouter);
 
 //All routes of the Firebase!!
 

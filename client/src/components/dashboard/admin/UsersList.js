@@ -164,16 +164,21 @@ function UsersList() {
                                     <div className='flex items-center justify-center col-span-1 sm:col-span-4 md:col-span-1 mt-2'>
                                         <button 
                                         className='
-                                            bg-verde hover:bg-verde-light text-white font-semibold text-sm
-                                            py-1 px-2 mx-1 w-24 sm:max-w-md
-                                            rounded-md cursor-pointer'
+                                            bg-gray-100 hover:bg-verde text-verde-dark hover:text-white 
+                                            rounded-md border-2 border-verde
+                                            font-semibold text-sm
+                                            w-24 sm:max-w-md py-1 px-2 mx-1 
+                                            shadow-sm cursor-pointer'
                                         onClick={() => handleDetails(user._id)}
                                         >
                                             Perfil
                                         </button>
                                         <button 
-                                        className='bg-rose-500 hover:bg-rose-400 text-white font-semibold 
-                                        py-1 px-2 w-24 rounded-md cursor-pointer mx-1 text-sm'
+                                        className='
+                                            bg-gray-100 hover:bg-rose-500 text-rose-600 hover:text-white font-semibold text-sm 
+                                            rounded-md border-2 border-rose-400 hover:border-rose-500 
+                                            w-24 sm:max-w-md py-1 px-2 mx-1
+                                            shadow-sm cursor-pointer'
                                         onClick={() => handleBlock(user)}
                                         >
                                             {user.state ? "Bloquear" : "Desbloquear"}

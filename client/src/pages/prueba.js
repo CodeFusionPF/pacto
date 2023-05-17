@@ -10,8 +10,8 @@ export default function Prueba() {
   
   // Controla la renderización y el cierre del modal
   const [showModal, setShowModal] = useState(false);
-  const cliente = {firstname: "Juan", lastname: "Perez"};
-  const vendedor = {firstname: "Pedro", lastname: "Gonzalez"};
+  const vendedor = {_id: "646287c2bb3f562f0379c626", firstname: "Marta", lastname: "Fagúndez"};
+  const cliente = {_id:"64628736c1fb5410012cb137", firstname: "Julian", lastname: "Alvarez"};
 
   // Función para abrir el modal
   const handleOpenModal = () => {

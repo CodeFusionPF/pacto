@@ -16,8 +16,8 @@ const ModalReview = ({vendedor, cliente, onClose}) => {
       review: "",
       // Valores posibles: "Active", "desactived", "blocked"
       state: "Active",
-      client: cliente,
-      vendor: vendedor,
+      client: cliente._id,
+      vendor: vendedor._id,
     });
 
     // Función para actualizar el valor de la calificación
@@ -39,23 +39,20 @@ const ModalReview = ({vendedor, cliente, onClose}) => {
 
     // Función para enviar la review
     const sendReview = async () => {
-      // COMENTADO HASTA QUE ESTÉ LA RUTA DEL BACK
-      // try {
-      //     // Realiza la petición al backend para crear la review
-      //     const newReviewId = await addReview(resenia);
+      try {
+          // Realiza la petición al backend para crear la review
+          const newReviewId = await addReview(resenia);
 
-      //     // Si se creó correctamente, mostrar un mensaje de éxito
-      //     if (newReviewId) {
-      //         alert("Tu calificación ha sido registrada exitosamente");
-      //     }
+          // Si se creó correctamente, mostrar un mensaje de éxito
+          if (newReviewId) {
+              alert("Tu calificación ha sido registrada exitosamente");
+          }
 
-      // } catch (error) {
-      //     console.log(error);
-      //     // Mostrar un mensaje de error
-      //     alert("Error al publicar la calificación, por favor intenta más tarde");
-      // }
-      // COMENTADO HASTA QUE ESTÉ LA RUTA DEL BACK
-      alert("Tu calificación ha sido registrada exitosamente");
+      } catch (error) {
+          console.log(error);
+          // Mostrar un mensaje de error
+          alert("Error al publicar la calificación, por favor intenta más tarde");
+      }
       onClose();
     };
 

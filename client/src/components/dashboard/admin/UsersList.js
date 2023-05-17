@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { BsPersonFill } from 'react-icons/bs';
+import { HiKey } from 'react-icons/hi';
 // Mock data
 // import { users } from "../../../utils/dashboard/admin/data";
 import { banUser, getAllUsers } from "../../../api/usersApi";
@@ -113,12 +114,23 @@ function UsersList() {
                                             }`
                                         }
                                         >
-                                            <BsPersonFill 
-                                            className={
-                                                user.state ? 'text-verde' 
-                                                : 'text-red-400'
-                                            } 
-                                            />
+                                            {
+                                                user.role === 'admin' ? 
+                                                    <HiKey size={20} 
+                                                    title='Administrador'
+                                                    className={`
+                                                        text-4xl
+                                                        ${ user.state ? 'text-verde' : 'text-red-400'}`
+                                                    } 
+                                                    />
+                                                :   <BsPersonFill size={20} 
+                                                    title='Usuario'
+                                                    className={`
+                                                        text-4xl
+                                                        ${ user.state ? 'text-verde' : 'text-red-400'}`
+                                                    } 
+                                                    />
+                                            }
                                         </div>
                                         <p className='font-medium text-center sm:pl-4'>{user.firstname + " " + user.lastname}</p>
                                     </div>

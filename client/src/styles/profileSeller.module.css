@@ -1,201 +1,196 @@
-.containerProfile{
-    margin: 30px;
-    
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    /* border: 2px solid blue; */
+.containerProfile {
+  margin: 30px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* border: 2px solid blue; */
+  background-color: var(--blanco);
 }
 
-.containerProfileData{
-    border: 2px solid var(--verde);
-    background-color: var(--gris-claro);
-    border-radius: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    padding: 0 2rem;
-    width: 60vw;
+.containerProfileData {
+  background-color: white;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  width: 60vw;
+  filter: drop-shadow(0px 0px 2px rgba(92, 91, 91, 0.25));
 }
 
-.profileTitle{
-    /* border: 2px solid blue; */
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: left;
-    margin: 30px 20px;
-    color: var(--verde);
+.profileTitle {
+  /* border: 2px solid blue; */
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: left;
+  margin: 30px 20px;
+  color: var(--verde);
 }
 
-.profileDataTitle{
-    /* border: 2px solid red; */
-    display: flex;
-    align-items: center;
+.profileDataTitle {
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
 
-    padding: 0 10px;
-    
-    font-size: 1.5rem;
-    font-weight: 500;
-    text-align: left;
-    margin: 30px 0;
-    color: var(--azul);
+  padding: 0 10px;
+
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: left;
+  margin: 30px 0;
+  color: var(--azul);
 }
 
 .lapiz {
-    /* border: 2px solid red; */
-    cursor: pointer;
-    margin-bottom: .5rem;
+  /* border: 2px solid red; */
+  cursor: pointer;
+  margin-bottom: 0.5rem;
 }
 
-.secciones{
-    /* border: 2px solid red; */
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    gap: 2rem;
-    align-items: center;
+.secciones {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  gap: 2rem;
+  align-items: center;
 }
 
+.form__profile {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 80%;
+  margin-bottom: 20px;
+  align-self: center;
 
-.form__profile{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 80%;
-    margin-bottom: 20px;
-    align-self: center;
-    
-    /* border: 2px solid red; */
+  /* border: 2px solid red; */
 }
 
-.form__profile label{
-    color: var(--gris);
-    
+.form__profile label {
+  color: var(--gris);
 }
 
-.form__profile input{
-    padding: 10px;
-    border: 1px solid var(--verde);
-    font-weight: 600;
-    border-radius: 5px;
-    outline: none;
-    margin-bottom: 10px;
-    width: 125%;
-    
+.form__profile input {
+  padding: 10px;
+  border: 1px solid var(--verde);
+  font-weight: 600;
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 10px;
+  width: 125%;
 }
 
-.form__profile input:focus{
-    border: 1px solid var(--gris);
+.form__profile input:focus {
+  border: 1px solid var(--gris);
 }
 
-
-.notReview{
-    /* border: 2px solid red; */
-    display: flex;
-    justify-content: center;
-    padding: 3rem 0;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
+.notReview {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
 }
 
-.notReview h4{
-    color: var(--gris);
-    font-weight: 600;
-    font-size: 18px;
-    text-align: center;
+.notReview h4 {
+  color: var(--gris);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
 }
 
-.review{
-    border: 1px solid var(--gris);
-    border-radius: 10px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-    padding: 10px;
+.review {
+  border: 1px solid var(--gris);
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  padding: 10px;
 }
 
-.review h6{
-    color: var(--lila);
-    font-weight: 600;
-    margin-bottom: 1rem;
+.review h6 {
+  color: var(--lila);
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-.review p{
-    margin-left: 1rem;
-    margin-bottom: .5rem;
-    font-weight: 500;
+.review p {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
-.review h4{
-    margin-left: 1rem;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--gris);
+.review h4 {
+  margin-left: 1rem;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gris);
 }
 
 @media (max-width: 1090px) {
-    .secciones button{
-        padding: 8px;
-        
-        font-size: 13px;
-        font-weight: 400;
-        
-    }
+  .secciones button {
+    padding: 8px;
+
+    font-size: 13px;
+    font-weight: 400;
+  }
 }
 
 @media (max-width: 900px) {
-    .containerProfile{
-        margin: 10px;
-    }
-    .containerProfileData{
-        width: 100%;
-    }
-    .form__Login{
-        width: 100%;
-    }
-    .form__Login input{
-       align-self: center;
-       width: 96%;
-    }
-    .form__Login label{
-        align-self: center;
-        width: 96%;
-    }
-    
+  .containerProfile {
+    margin: 10px;
+  }
+  .containerProfileData {
+    width: 100%;
+  }
+  .form__Login {
+    width: 100%;
+  }
+  .form__Login input {
+    align-self: center;
+    width: 96%;
+  }
+  .form__Login label {
+    align-self: center;
+    width: 96%;
+  }
 }
 
-@media (max-width: 500px){
-    .profileDataTitle{
-        font-size: 1.2rem;
-    }
+@media (max-width: 500px) {
+  .profileDataTitle {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 485px) {
-    .profileDataTitle h3{
-        font-size: 20px;
-    }
-    .profileDataTitle{
-        margin-bottom: 1rem;
-    }
-    .secciones{
-        gap: 1rem;
-        flex-direction: column;
-    }
-    .secciones button{
-        width: 90%;
-    }
+  .profileDataTitle h3 {
+    font-size: 20px;
+  }
+  .profileDataTitle {
+    margin-bottom: 1rem;
+  }
+  .secciones {
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .secciones button {
+    width: 90%;
+  }
 }
 
 @media (max-width: 425px) {
-    .profileDataTitle h3{
-        font-size: 17px;    
-    }
+  .profileDataTitle h3 {
+    font-size: 17px;
+  }
 }
 
 @media (max-width: 380px) {
-    .profileDataTitle h3{
-        font-size: 14px;    
-    }
+  .profileDataTitle h3 {
+    font-size: 14px;
+  }
 }

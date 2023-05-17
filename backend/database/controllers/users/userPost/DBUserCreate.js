@@ -13,9 +13,6 @@ const createUser = async (user, provider = null) => {
             const codeverified = Math.floor(Math.random() * 900000) + 100000;
             newUser = new User({ ...user, verified: false, codeverified, recoverycode: null })
 
-
-
-
         } else {
             newUser = new User(user)
 
@@ -23,6 +20,7 @@ const createUser = async (user, provider = null) => {
 
         newWallet.user = newUser._id;
         const walletUser = await newWallet.save();
+
         newUser.wallet = walletUser._id;
         newUser.role = userRole._id;
         newUser.registrationdate = new Date()

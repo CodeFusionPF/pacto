@@ -3,14 +3,11 @@ const logActives = require("./handlers/logActives");
 const logBalanceToday = require("./handlers/logBalanceToday");
 const logReviews = require("./handlers/logReviews");
 const logQuestions = require("./handlers/logquestions");
+const logAdminPostDay = require("./logAdminPostDay");
 
 const LogAdminController = async (valuemain, valuesecondary, query) => {
     try {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const tomorrow = new Date(today);
-        tomorrow.setDate(today.getDate() + 1);
-        const logToday = await LogAdmin.findOne({ date: { $gte: today.toISOString(), $lt: tomorrow.toISOString() } })
+        const logToday = await logAdminPostDay()
         if (query === "balance") {
             await logBalanceToday(valuemain, valuesecondary, logToday)
         }
@@ -27,7 +24,6 @@ const LogAdminController = async (valuemain, valuesecondary, query) => {
     } catch (error) {
         throw Error(error)
     }
-
 
 }
 

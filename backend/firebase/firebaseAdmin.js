@@ -29,35 +29,33 @@ const firebaseAdminAuth = admin.auth()
 firebaseAdminRouter.get("/authgoogle", async (req, res) => {
     try {
         const { uid } = req.query
-
         const user = await firebaseAdminAuth.getUser(uid)
         const userdb = await checkUserExists(null, user.email)
-        if (userdb === false) {
+        console.log(userdb)
+        if (userdb === null) {
             const aux = user.displayName.split(" ")
             const phonenumber = user.phoneNumber ? user.phoneNumber : null
             const pass = bcrypt.hashSync(uid, 10)
             const newUser = {
                 firstname: aux.shift(),
                 lastname: aux.pop(),
-                calification: 0,
                 email: user.email,
-                state: true,
                 verified: true,
                 phone: phonenumber,
                 password: pass,
                 address: "None"
             }
             const response = await createUser(newUser, true)
-            
+
             const tokenPayload = { userId: response._id };
             const token = jwt.sign(tokenPayload, process.env.JWT_PRIVATE_KEY);
 
-            res.status(200).json({user: response, token})
+            res.status(200).json({ user: response, token })
         } else {
             const tokenPayload = { userId: userdb._id };
             const token = jwt.sign(tokenPayload, process.env.JWT_PRIVATE_KEY);
 
-            res.status(200).json({user: userdb, token})
+            res.status(200).json({ user: userdb, token })
         }
     } catch (error) {
         res.status(400).json({ error: error.message })

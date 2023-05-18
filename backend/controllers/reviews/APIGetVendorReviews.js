@@ -4,7 +4,7 @@ const getAllVendorReviews = async (req, res) => {
     try{
         const {id, page} = req.query;
 
-        const amountXPage = 10;
+        const amountXPage = 30;
 
         if(id){
             let reviews = await DBReviewGetAllFromVendor(id);

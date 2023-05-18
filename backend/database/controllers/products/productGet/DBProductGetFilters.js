@@ -1,5 +1,8 @@
 const Product = require("../../../models/product");
-const DBProductGetCategory = require('../productGet/handlers/DBProductGetCategory');
+const DBProductGetCategory = require('../productGet/Handlers/DBProductGetCategory');
+// Por crash en deploy, ajustè la ruta de
+// '../productGet/handlers/DBProductGetCategory' a
+// '../productGet/Handlers/DBProductGetCategory'
 const getProductsAll = require("./handlers/handlerGetAll");
 const handlerFilters = require('./handlers/handlerFilters.js')
 

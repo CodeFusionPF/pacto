@@ -1,4 +1,5 @@
-const getProductsAll = require('../../database/controllers/products/productGet/handlers/handlerGetAll');
+const getProductsAll = require('../../database/controllers/products/productGet/Handlers/handlerGetAll');
+// Por crash en servidor, ajuste en nombre de ruta lìnea1
 
 const getAllProductsAdmin = async (req, res) =>{
   

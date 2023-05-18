@@ -12,7 +12,8 @@ const Purchased = (props) => {
   const [stateProduct,setStateProduct] = useState({
     user:props.user,
     idOrder:props.order,
-    idProduct: props.id
+    idProduct: props.id,
+    vendor: props.vendor
   })
 
   // Controla la renderización y el cierre del modal
@@ -47,13 +48,13 @@ const Purchased = (props) => {
         </ul>
         
         {props.state === 'comprado' ? <button className={styles.confirmBtn} onClick={handleSetProductsState}>Recibido</button>: 
-        <button className={styles.confirmBtn}>Calificar</button> }
+        <button className={styles.confirmBtn} onClick={handleOpenModal} >Calificar</button> }
       </div>
-      {/* {
+      {
           showModal && (
-            <ModalReview vendedor={vendedor} cliente={stateProduct.user} onClose={handleCloseModal}/>
+            <ModalReview vendedor={stateProduct.vendor} cliente={stateProduct.user} onClose={handleCloseModal}/>
           )
-      } */}
+      }
     </div>
   );
 };

@@ -9,7 +9,7 @@ import { useEffect } from "react"
 import { autoLoginUser, loginGoogle } from "../redux/features/auth/authSlice"
 import { useRouter } from "next/router"
 import { GoogleButton } from 'react-google-button';
-import { auth } from "./firebase";
+import { auth } from "../components/firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
 

@@ -47,6 +47,11 @@ function WalletsList() {
                         vendors?.map((vendor, index) => {
                             
                             return (
+                                <>
+                                {/* Si existe vendor.user... */}
+                                { 
+                                    vendor.user &&
+
                                 <li key={index} 
                                 className='bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-4 grid grid-cols-2 sm:grid-cols-4 items-center justify-between '
                                 >
@@ -68,6 +73,8 @@ function WalletsList() {
                                     <p className='text-verde grid col-span-1 font-bold'>{`$ ${vendor.receivableBalance.toLocaleString()}`}</p>  
 
                                 </li>
+                            }
+                                </>
                             )
                         })
                     }

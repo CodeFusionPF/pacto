@@ -5,7 +5,7 @@ export const getAllWallets = async () => {
     const response = await axios.get(`/wallets`);
     return response.data;
   } catch (error) {
-    console.error('Error al obtener categorías:', error);
+    console.error('Error al obtener las wallets:', error);
     return [];
   }
 };

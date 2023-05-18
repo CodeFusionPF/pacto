@@ -52,6 +52,13 @@ export default function Menu(){
                             <button className={style.btn}>Perfil {'>'}</button>
                         </Link>
                     }
+                    {
+                            userState.user?.role?.role === 'admin' &&
+
+                            <Link href="/dashboard/admin" className={style.link}>
+                                <button className={style.btn}>Admin Panel {'>'}</button>
+                            </Link>
+                    }
             </div>
             <div className={style.logo}>
                 <Link href={"/"}>

@@ -29,7 +29,8 @@ const checkUserExists = async (idUser, email = false, lean = false) => {
                     // Selecciona el campo 'department' del departamento
                 }
             })
-        
+            .populate('shoppingCart.products.product', '-__v')
+
             if (lean){
                
                 isUser.lean();

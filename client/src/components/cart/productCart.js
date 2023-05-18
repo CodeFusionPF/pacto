@@ -2,7 +2,7 @@ import style from "../../styles/cart/car.module.css";
 import Image from "next/image";
 
 export default function productCart(props) {
-    const {images,name,price,ammount} = props;
+    const {images,name,price,ammount, total} = props;
     return (
         <>
             <div className={style.products}>
@@ -18,13 +18,13 @@ export default function productCart(props) {
                     <div>
                         <div className={style.quantity}>
                             <Image className={style.quantityImage} src="/image/menos.png" width={10} height={10} />
-                            <input type="text" className={style.inputQuantity} value="1"/>
+                            <input type="number" className={style.inputQuantity} min="1" max="100" />
                             <Image className={style.quantityImage} src="/image/mas.png" width={10} height={10} />
                         </div>
                         <p className={style.deleteProduct}>Eliminar</p>
                     </div>
                     <div className={style.totalProduct}> 
-                        <p>{`$ ${price}`}</p>
+                        <p>{`$ ${total}`}</p>
                     </div>
             </div>
             

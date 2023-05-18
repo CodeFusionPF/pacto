@@ -21,14 +21,19 @@ const shoppingCart = async (req, res) => {
         const realProduct = await checkProductExists(product.id);
         if (realProduct) {
 
+          console.log(userId)
           const productsShopping = await DBShoppingCartGet(userId)
 
           //Si ya hay productos en el carrito
           if (productsShopping.shoppingCart === undefined) {
-
+            console.log('carrito vacio')
+            
             await DBShoppingCartAddProduct(userId, product.id, product.amount);
 
+
+            
           } else {
+            console.log(productsShopping.shoppingCart.products);
 
             const alreadyInCart = productsShopping.shoppingCart.products.some(item => item.product._id.equals(product.id));
 
@@ -38,30 +43,40 @@ const shoppingCart = async (req, res) => {
 
             //el producto no esta en el carrito
             if (!alreadyInCart) {
+              console.log('No esta el producto aun en el carrito del usuario');
+
               await DBShoppingCartAddProduct(userId, product.id, product.amount);
             }
             //El producto esta en el carrito
             
-            if (alreadyInCart && productAmount.ammount != product.amount) {
+            else if(alreadyInCart && productAmount.ammount != product.amount) {
+
+              console.log('se actualizo correctamente la cantidad del producto')
               
-              const newValues = { ammount: product.amount };
+              // const newValues = { ammount: product.amount };
               await DBUpdateProductInShoppingCart(userId, product.id,product.amount)
               // await DBShoppingCartAddProduct(userId, product.id, product.amount,newValues);
             }
+            else{
+              throw new Error("El producto ya se encuentra en el carrito");
+            }
+
           }
 
         }
 
       }));
 
-      const user = await DBShoppingCartGet(userId);
-      return res.status(200).json({ products: user.shoppingCart.products });
+
+
+      console.log("producto agregado exitosamente al carrito")
+      return res.status(200).json({msg:"producto agregado exitosamente al carrito"});
 
     }
 
-  } catch (e) {
-    console.error(e);
-    return res.status(500).json({ error: 'Error adding products to shopping cart' });
+  } catch (error) {
+    console.error({ error: `Error adding products to shopping cart:${error.message}` });
+    return res.status(500).json({message: `Error adding products to shopping cart: ${error.message}`});
   }
 };
 

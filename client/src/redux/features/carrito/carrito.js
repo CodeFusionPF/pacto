@@ -14,16 +14,18 @@ export const sendProducts = createAsyncThunk(
         },
       };
 
-      const response = await axios.post("/shoppingcart", [product], config);
+        const response = await axios.post("/shoppingcart", [product], config);
 
-      // Guardar los productos devueltos por la API en el localStorage
-      localStorage.setItem("shopping_cart", JSON.stringify(response.data.products));
-      dispatch(autoLoginUser(token))
+        // Guardar los productos devueltos por la API en el localStorage
+        // localStorage.setItem("shopping_cart", JSON.stringify(response.data.products));
 
-      return response.data.products;
+        dispatch(autoLoginUser(token))
+
+        return response.data.products;
     } catch (error) {
       console.error(error);
-     
+      return Promise.reject(error.message)
+    
     }
   }
 );
@@ -63,12 +65,12 @@ const carritoSlice = createSlice({
   },
   reducers: {
    
-    verifyLocalStorageProducts: (state, action) => {
-      let productsLocalStorage = JSON.parse(
-        localStorage.getItem("shopping_cart")
-      );
-      state.products = productsLocalStorage;
-    },
+    // verifyLocalStorageProducts: (state, action) => {
+    //   let productsLocalStorage = JSON.parse(
+    //     localStorage.getItem("shopping_cart")
+    //   );
+    //   state.products = productsLocalStorage;
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -77,10 +79,11 @@ const carritoSlice = createSlice({
       state.status = "loading";
       })
     .addCase(sendProducts.fulfilled, (state,action) => {
-        state.status = "succeeded";
-        state.products = action.payload
-      })
-      .addCase(sendProducts.rejected, (state, action) => {
+      state.status = "succeeded";
+      state.products = action.payload
+    })
+    .addCase(sendProducts.rejected, (state, action) => {
+        console.log(action)
         state.status = "failed";
         state.error = action.error.message;
       })

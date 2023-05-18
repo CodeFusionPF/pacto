@@ -20,7 +20,7 @@ const salesRouter = require('./routes/sales');
 const transactionsRouter = require('./routes/transactions')
 const questionsRouter = require('./routes/questions');
 const reviewsRouter = require('./routes/reviews');
-
+const walletsRouter = require('./routes/wallets');
 
 //CONEXION A LA DB!!!
 const mongoose = require('./database/mongoose');
@@ -77,6 +77,9 @@ app.use(transactionsRouter);
 
 //Routes of reviews
 app.use(reviewsRouter);
+
+//Routes of wallets
+app.use(walletsRouter);
 
 //All routes of the Firebase!!
 

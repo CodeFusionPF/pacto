@@ -37,8 +37,8 @@ function ProfileUser() {
         lastname: user.lastname || "",
         address: user.address || "",
         phone: user.phone || "",
-        department: user.city.department.department || "",
-        city: user.city.city || ""
+        department: user?.city?.department?.department || "",
+        city: user?.city?.city || ""
       }));
     }
   }, [user]);
@@ -135,7 +135,7 @@ function ProfileUser() {
 
                 <label>Departamento:</label>
                 <select  name="department" id="department" onChange={handleDepaSelect}defaultValue="default">
-                  <option disabled value="default">{user.city.department.department}</option>
+                  <option disabled value="default">{user?.city?.department?.department || 'None'}</option>
                   {departments &&
                     departments.map((depa) => (
                       <option key={depa._id} value={depa.department} data-categoria="departamento">
@@ -146,7 +146,7 @@ function ProfileUser() {
 
                 <label>Ciudad:</label>
                 <select name="city" id="city" onChange={handleCitySelect} defaultValue="default">
-                    <option disabled value="default">{user.city.city}</option>
+                    <option disabled value="default">{user?.city?.city || 'None'}</option>
                     {
                       cities && cities.map(obj => (
                         <option key={obj._id} value={obj._id} data-categoria="ciudad">{obj.city}</option>
@@ -176,10 +176,10 @@ function ProfileUser() {
                 <input value={user?.lastname || ""} name="lastname" type="text" readOnly />
 
                 <label>Departamento:</label>
-                <input value={user?.city.department.department || ""} name="department" type="text" readOnly />
+                <input value={user?.city?.department?.department || "None"} name="department" type="text" readOnly />
 
                 <label>Ciudad:</label>
-                <input value={user?.city.city || ""} name="city" type="text" readOnly />
+                <input value={user?.city?.city || "None"} name="city" type="text" readOnly />
 
                 <label>Dirección:</label>
                 <input value={user?.address || ""} name="address" type="text" readOnly />

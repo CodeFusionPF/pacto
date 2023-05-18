@@ -63,21 +63,37 @@ const FilterPanel = ({ isVisible, setVisibility }) => {
 
   // POR EL MOMENTO NO USAMOS EL DEBOUNCED
   // const debouncedhandlerFilterStatus = debounce(handlerFilterStatus, 800);
-    
-  const handlePriceChange = (newValue) => {
 
-    console.log(newValue)
+  const [price, setPrice] = useState({
+    min: filters.price.min,
+    max: filters.price.max
+  })
+    
+  const handlePriceChange = (e) => {
+    const {name, value} = e.target
+
+    setPrice({
+      ...price,
+      [name]: value
+    })
+  }
+
+  const handlePriceSearch = () => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => {
       dispatch(setFilters({
         ...filters,
-        price: {
-          min: newValue[0],
-          max: newValue[1]
-        }
+        price: price
       }))
     }, 1000); 
   }
+
+  useEffect(() => {
+    setPrice({
+      min: filters.price.min,
+      max: filters.price.max
+    })
+  }, [filters.price]);
 
   //filters.categorias = { categoria, subcategoria}  {}
   //filters.status= [0, 1, 2]  []
@@ -307,7 +323,7 @@ const FilterPanel = ({ isVisible, setVisibility }) => {
                     <Accordion.Body>
 
                       {/* Slider para el rango de precios*/}
-                      <Slider
+                      {/* <Slider
                         className={styles.priceSlider}
                         thumbClassName={styles.thumb}
                         defaultValue={[filters.price.min, filters.price.max]}
@@ -319,7 +335,17 @@ const FilterPanel = ({ isVisible, setVisibility }) => {
                         minDistance={10000}
                         value={[filters.price.min, filters.price.max]}
                         onChange={(newValue) => {handlePriceChange(newValue)}}
-                      />
+                      /> */}
+                      <div className={styles.containerPrice}>
+                      <label className={styles.labelPrice}>Precio minimo:</label>
+                      <input className={styles.inputPrice} type="number" value={price.min} onChange={handlePriceChange} name="min" />
+
+                      <label className={styles.labelPrice}>Precio maximo:</label>
+                      <input className={styles.inputPrice} type="number" value={price.max} onChange={handlePriceChange} name="max" />
+
+                      <button className={styles.buttonPrice} onClick={handlePriceSearch}>Buscar precio</button>
+                      </div>
+                      
 
                     </Accordion.Body>
                   </Accordion.Item>

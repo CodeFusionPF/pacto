@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { verifyLocalStorageProducts } from '@/redux/features/carrito/carrito';
 axios.defaults.baseURL = 'https://hand2hand.up.railway.app/';
-// axios.defaults.baseURL = 'http://localhost:3001';
+//axios.defaults.baseURL = 'http://localhost:3001';
 
 
 export default function App({ Component, pageProps }) {

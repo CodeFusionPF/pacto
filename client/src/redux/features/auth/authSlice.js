@@ -78,9 +78,13 @@ export const loginGoogle = createAsyncThunk(
 // Async thunk para editar datos de un usuario
 export const putEditUser = createAsyncThunk(
   "auth/editUser",
-  async(user) => {
+  async(user,{getState,dispatch}) => {
     const response = await axios.put('/edituser', user);
-    return response.data;
+    const user_unverified_token = localStorage.getItem("user_verified");
+    
+    dispatch(autoLoginUser(user_unverified_token))
+    // console.log(response.data);
+    // return response.data;
   }
 )
 // Async thunk para deslogear al usuario
@@ -190,7 +194,7 @@ const authSlice = createSlice({
       })
       .addCase(putEditUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user;
+        // state.user = action.payload.user;
       })
       .addCase(putEditUser.rejected, (state, action) => {
         state.loading = false;

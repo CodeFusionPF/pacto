@@ -23,7 +23,7 @@ export default function car() {
 
               totalPrice = price * item.ammount;
               
-              return (<ProductoCard name= {name} images={images} price={price} ammount={ammount} total={totalPrice}/>)
+              return (<ProductoCard name= {name} images={images} price={price} ammount={item.ammount} total={totalPrice}/>)
             })}
 
             {/*  Costo envío*/}

@@ -15,14 +15,16 @@ export default function productCart(props) {
                     </div>
 
                 </div>
-                    <div>
+                        <p>{`Produtos: ${ammount}`}</p>
+
+                    {/* <div>
                         <div className={style.quantity}>
                             <Image className={style.quantityImage} src="/image/menos.png" width={10} height={10} />
                             <input type="number" className={style.inputQuantity} min="1" max="100" />
                             <Image className={style.quantityImage} src="/image/mas.png" width={10} height={10} />
                         </div>
                         <p className={style.deleteProduct}>Eliminar</p>
-                    </div>
+                    </div> */}
                     <div className={style.totalProduct}> 
                         <p>{`$ ${total}`}</p>
                     </div>

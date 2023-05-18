@@ -47,12 +47,17 @@ function Index() {
 
   return (
     <Layout>
-      {orders ? orders.map((order,index) => (
-        <Link href={`/orders/${order._id}`} key={order._id}>
-          
-          <Orders key={order._id} user={order.user} state={order.state} time={'2023-5-16'} numero ={index} total={order.totalprice}/>
-        </Link>
-      )): null}
+     {orders ? orders.map((order,index) => {
+        const [fecha, horaCompleta] = order.creationdate.split('T');
+        const [hora, minutos, segundos] = horaCompleta.split(':');
+        
+        return (
+          <Link href={`/orders/${order._id}`} key={order._id}>
+            <Orders key={order._id} user={order.user} state={order.state} date={fecha} hora={hora} minutos={minutos} numero={index} total={order.totalprice}/>
+          </Link>
+        );
+      }): null}
+
     </Layout>
   );
 }

@@ -11,7 +11,8 @@ const Orders = (props) => {
             <span>#{props.numero + 1}</span>
             <span>Monto total: ${props.total}</span>
             <span>Estado: {props.state}</span>
-            <span>Fecha: {props.time}</span>
+            <span>Fecha: {props.date}</span>
+            <span>{props.hora}:{props.minutos}</span>
           </li>
         </ul>
       </div>

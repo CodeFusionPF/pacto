@@ -38,9 +38,9 @@ export default function App({ Component, pageProps }) {
               
           }
           
-          if(shopping_cart){
-            store.dispatch(verifyLocalStorageProducts())
-          }
+          // if(shopping_cart){
+          //   store.dispatch(verifyLocalStorageProducts())
+          // }
         }
       }
     

@@ -20,14 +20,16 @@ export const getDetailOrder = createAsyncThunk(
       console.log(e);
     }
   }
-);
-export const updateStateProduct = createAsyncThunk(
-  "updateStateProduct",
-  async ({idOrder,idProduct}) => {
-    try {
-      // console.log(idOrder,idProduct);
-      const response = await axios.put(`/transactions/${idOrder}/${idProduct}`);
-      // return response.data;
+  );
+  export const updateStateProduct = createAsyncThunk(
+    "updateStateProduct",
+    async ({idOrder,idProduct}) => {
+      try {
+        // console.log(idOrder,idProduct);
+        const response = await axios.put(`/transactions/${idOrder}/${idProduct}`);
+        
+
+      return response.data;
     } catch (e) {
       console.log(e);
     }
@@ -62,7 +64,7 @@ const transactionsSlice = createSlice({
       // Actualizar estados de los productos de una orden
       .addCase(updateStateProduct.pending, (state, action) => {})
       .addCase(updateStateProduct.fulfilled, (state, action) => {
-        state.detailOrder = [action.payload];
+        state.detailOrder = action.payload;
       })
       .addCase(updateStateProduct.rejected, (state, action) => {});
   },

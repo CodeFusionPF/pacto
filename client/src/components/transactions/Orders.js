@@ -8,7 +8,7 @@ const Orders = (props) => {
       <div className={styles.products}>
         <ul className={styles.info_products}>
           <li>
-            <span>Orden: {props.numero + 1}</span>
+            <span>#{props.numero + 1}</span>
             <span>Monto total: ${props.total}</span>
             <span>Estado: {props.state}</span>
             <span>Fecha: {props.time}</span>

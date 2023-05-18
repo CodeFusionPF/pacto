@@ -49,9 +49,10 @@ function Index() {
     <Layout>
       {orders ? orders.map((order,index) => (
         <Link href={`/orders/${order._id}`} key={order._id}>
-          <Orders key={order._id} user={order.user} state={order.state} time={'2023-5-16'} numero ={index}/>
+          
+          <Orders key={order._id} user={order.user} state={order.state} time={'2023-5-16'} numero ={index} total={order.totalprice}/>
         </Link>
-      )): "hola"}
+      )): null}
     </Layout>
   );
 }

@@ -8,23 +8,23 @@ import { useSelector } from "react-redux";
 
 export default function car() {
 
-  const shoppingCart = useSelector((state)=> state.shoppingCart.products);
+  const shoppingCart = useSelector((state)=> state.user?.user?.shoppingCart);
   let totalPrice = null;
+  console.log(shoppingCart);
 
   return (
     <>
-      <Layout>
+    {shoppingCart?.products?.length > 0 ? <Layout>
         <div className={style.container}>
             <p className={style.titleCart}>Carrito de compras</p><hr/>
 
-            {shoppingCart.length > 0 && shoppingCart.map(item=>{
-              const {product,ammount,_id} = item;
+            {shoppingCart?.products.length > 0 && shoppingCart.products.map(item=>{
+              const {_id,name,images,price,ammount} = item.product;
 
-              totalPrice += product.price;
-            
-              return (<ProductoCard name= {product.name} images={product.images} price={product.price} ammount={ammount}/>)
+              totalPrice = price * item.ammount;
+              
+              return (<ProductoCard name= {name} images={images} price={price} ammount={ammount} total={totalPrice}/>)
             })}
-
 
             {/*  Costo envío*/}
             {/* <div className={style.shipping}>
@@ -33,10 +33,10 @@ export default function car() {
             </div> */}
 
              {/* total producto */}
-             <div className={style.shipping}>
+             {/* <div className={style.shipping}>
               <h5>Total con envío</h5>
               <p>{`$ ${totalPrice}`}</p>
-            </div>
+            </div> */}
             
             {/* Sección para los botones de submit y cancelar */}
             <div className={style.buttons}>
@@ -49,6 +49,7 @@ export default function car() {
             </div>
           </div>    
      
-      </Layout>
+      </Layout>: <p>Cargando carrito...</p> }
+      
     </>
 )}

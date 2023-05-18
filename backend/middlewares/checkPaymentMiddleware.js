@@ -9,10 +9,9 @@ const checkProductsPayment = async(req,res,next) =>{
     //token usuario
     const userId = req.userId;
     //productos del shopping cart del usuario
-    const shoppingCart  = req.body;
+    // const shoppingCart  = req.body;
     //validar el usuario
     const user = await checkUserExists(userId,null);
-
 
 
     //productos con formato mercado pago
@@ -22,16 +21,23 @@ const checkProductsPayment = async(req,res,next) =>{
 
     if(user){
 
-        const productsMercadoPago = Promise.all(shoppingCart.map(async(item)=>{
+        const productsMercadoPago = Promise.all(user.shoppingCart.products.map(async(item)=>{
+            console.log(item)
 
             //validar existencia del producto
             const realProduct = await checkProductExists(item.product._id);
             
             if(realProduct){
-                const productStock = await DBProductGetId(item.product._id);
+                // const productStock = await DBProductGetId(item.product._id);
+                
+                
+                //validar si tenemos stock\
+                // console.log(item.ammount)
+                // console.log()
 
-                //validar si tenemos stock
-                if(item.ammount <= productStock.stock){
+                if(item.ammount <= realProduct.stock){
+                    console.log('tenemos inventario')
+                    
 
                     const productMercadoPago = {
                         id: item.product._id,
@@ -44,26 +50,25 @@ const checkProductsPayment = async(req,res,next) =>{
                         unit_price: item.product.price
                     };
         
+                    console.log(productMercadoPago);
                     formattingProducts.push(productMercadoPago);
 
                 }
                 else{
                     console.log('Cantidad más alta de la que hay en stock')
-                    //remover producto
-                    //en este caso se remueve directamente el producto del carrito, al enviar una cantidad mas alta de la que esta en stock
-                    //en un futuro solo remover si el stock es 0 o simplemente validar si existe
-                    foundUnavailableProducts = true;
-                    // await DBShoppingCartRemoveProduct(userId,item.product._id);
-
-                                  
+                    // //remover producto
+                    // //en este caso se remueve directamente el producto del carrito, al enviar una cantidad mas alta de la que esta en stock
+                    // //en un futuro solo remover si el stock es 0 o simplemente validar si existe
+                     foundUnavailableProducts = true;
+                    // // await DBShoppingCartRemoveProduct(userId,item.product._id);           
                 }
             }
         })) 
 
         await productsMercadoPago;
 
-        const newShoppingCart = await DBShoppingCartGet(userId);
-        if(foundUnavailableProducts) return res.status(409).json({error: "El producto ya no está disponible en el la cantidad seleccionada",  products:newShoppingCart});
+        // const newShoppingCart = await DBShoppingCartGet(userId);
+        if(foundUnavailableProducts) return res.status(409).json({error: "El producto ya no está disponible en el la cantidad seleccionada"});
 
     }
     // console.log(formattingProducts);

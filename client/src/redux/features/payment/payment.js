@@ -5,37 +5,28 @@ import axios from "axios";
 
 export const payment = createAsyncThunk(
   "payment",
-  async (_, { getState, dispatch }) => {
+  async (_,{getState,dispatch}) => {
     try {
+     
       const token = localStorage.getItem("user_verified");
+      
       const config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
+      
+      
+      const response  = await axios.post("/payment", {}, config);
+      const urlMercadoPago = response.data
+      dispatch(setPaymentUrl(urlMercadoPago));
+      dispatch(setStatus("succeeded"))
 
-      let productsLocalStorage = JSON.parse(
-        localStorage.getItem("shopping_cart")
-      );
-      const response = await axios.post(
-        "/payment",
-        productsLocalStorage,
-        config
-      );
-      const paymentUrl = response.data;
-
-      dispatch(setPaymentUrl(paymentUrl));
-
-      dispatch(setStatus("succeeded"));
     } catch (error) {
-      dispatch(setError('El producto ya no está disponible en el la cantidad seleccionada'));
-      dispatch(setStatus("failed"));
+      // dispatch(setError('El producto ya no está disponible en el la cantidad seleccionada'));
+      // dispatch(setStatus("failed"));
+      console.log(error.message);
 
-      // Guardar los productos devueltos por la API en el localStorage
-      localStorage.setItem(
-        "shopping_cart",
-        JSON.stringify(response.data.products)
-      );
     }
   }
 );

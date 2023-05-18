@@ -15,6 +15,10 @@ const productSchema = new Schema({
         enum: ["en venta", "agotado", "bloqueado", "desactivado"],
         default: "en venta"
     },
+    label: {
+        type: String,
+        enum: ["oferta", "ninguno"]
+    },
     Brand: String,
     stock: Number,
     category: String,

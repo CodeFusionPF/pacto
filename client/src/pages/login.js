@@ -76,8 +76,8 @@ export default function login(){
     return (
         <div className= {style.login}>
             <Head>
-                <title>PACTO | Login</title>
-                <meta name="description" content="PACTO" />
+                <title>H2H | Login</title>
+                <meta name="description" content="H2H" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/pacto-logo.png" />
             </Head>

@@ -3,14 +3,16 @@ import { useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import debounce from "@/utils/debounce";
 import { setFilters } from "@/redux/features/products/productsSlice";
+import { useRouter } from "next/router";
 
 export default function SearchBar() {
   const filters = useSelector(state => state.products.filters)
+  const navigate = useRouter();
 
   const [input, setInput] = useState("");
   // const [suggestions, setSuggestions] = useState([]);
 
-
+  
 
   const dispatch = useDispatch()
   // const handleChangeInput = (event) => {
@@ -47,6 +49,11 @@ export default function SearchBar() {
       ...filters,
       name: input
     }));
+
+    if(navigate.pathname !== "/productos"){
+      navigate.push('/productos');
+    }
+    
   };
 
   const debouncedHandleSubmit = debounce(handleSubmit, 1000);

@@ -11,6 +11,7 @@ export default function NavBar(){
 
     const { isOpen } = useSelector(state => state.menu);
     const  userState  = useSelector(state => state.user);
+
     const  shoppingCart  = useSelector(state => state.user.user?.shoppingCart?.products);
 
     const dispatch = useDispatch();
@@ -57,6 +58,13 @@ export default function NavBar(){
                         <Link href="/faqs" className={style.link}>
                             <button className={style.btn}>¿Necesitas ayuda?</button>
                         </Link>
+                        {
+                            userState.user?.role?.role === 'admin' &&
+
+                            <Link href="/dashboard/admin" className={style.link}>
+                                <button className={style.btn}>Admin Panel</button>
+                            </Link>
+                        }
                     </div>
                     }
             </div>

@@ -7,6 +7,7 @@ import { BsPostcard } from 'react-icons/bs';
 import { BiCategory } from 'react-icons/bi';
 import { MdOutlineRateReview } from 'react-icons/md';
 import { FiSettings } from 'react-icons/fi';
+import { RiMoneyDollarCircleLine } from 'react-icons/ri';
 
 const Sidebar = () => {
   // LÓGICA DEL COMPONENTE
@@ -72,6 +73,17 @@ const Sidebar = () => {
               `}
               title='Últimos usuarios registrados'>
                 <HiOutlineUser size={20} />
+            </div>
+          </Link>
+
+          {/* Botón Billeteras */}
+          <Link href="/dashboard/admin/billeteras">
+            <div 
+              className={`bg-gray-100 text-verde-dark hover:bg-verde hover:text-white active:bg-verde active:text-white cursor-pointer p-3 mt-4 mb-2 rounded-lg inline-block 
+              ${router.pathname === "/dashboard/admin/billeteras" ? "bg-verde text-white" : "bg-gray-100 text-verde-dark"}
+              `}
+              title='Billeteras de vendedores'>
+                <RiMoneyDollarCircleLine size={20} />
             </div>
           </Link>
 

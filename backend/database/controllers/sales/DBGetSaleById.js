@@ -5,13 +5,14 @@ const getSaleByIdDB = async (id) => {
 
         const order = await Order.findById(id)
             .populate("products.product", ["name", "state", "price", "user"])
-            .populate("products.product.user")
+
             .lean()
+        const vendor = await User.findById(order.products.product.user)
         //console.log(order.products)
         if (order === null) {
             return false
         }
-        return order
+        return { order, vendor }
 
 
     } catch (err) {

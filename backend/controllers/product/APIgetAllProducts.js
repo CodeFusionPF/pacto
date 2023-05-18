@@ -1,4 +1,7 @@
-const getProductsAll = require('../../database/controllers/products/productGet/handlers/handlerGetAll')
+const getProductsAll = require('../../database/controllers/products/productGet/Handlers/handlerGetAll')
+// Por crash en deploy, ajustè la ruta de 
+// ../../database/controllers/products/productGet/handlers/handlerGetAll a
+// ../../database/controllers/products/productGet/Handlers/handlerGetAll
 
 const getAllProducts = async (req, res) =>{
   

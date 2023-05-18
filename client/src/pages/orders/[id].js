@@ -38,6 +38,7 @@ function DetailOrder() {
             amount={product.ammount}
             order={order._id}
             user={order.user}
+            vendor={product.product.user}
           />
         ))}
       </React.Fragment>

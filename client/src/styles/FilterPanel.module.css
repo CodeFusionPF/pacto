@@ -126,6 +126,41 @@
   gap: 10px;
 }
 
+.containerPrice{
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+}
+
+.labelPrice{
+  color: var(--gris);
+  font-weight: 500;
+}
+
+.inputPrice{
+  border: 1px solid var(--verde);
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.buttonPrice{
+  color: white;
+  font-weight: 500;
+  background-color: var(--verde);
+
+  border-radius: 5px;
+  width: fit-content;
+  padding: 6px;
+  
+  align-self: center;
+  transition: .3s ease;
+}
+
+.buttonPrice:hover{
+  scale: calc(1.02);
+  box-shadow: 1px 1px 8px black;
+}
+
 @media screen and (max-width: 980px) {
   .container {
     position: fixed;

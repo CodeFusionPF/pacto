@@ -1,4 +1,5 @@
 const DBStateSetOrderByClient =  require("../../database/controllers/transactions/DBStateSetOrderByClient")
+const getSaleByIdDB = require("../../database/controllers/sales/DBGetSaleById")
 
 const updateStateProduct = async (req, res) => {
     const { id, product}  = req.params;
@@ -6,9 +7,10 @@ const updateStateProduct = async (req, res) => {
     try{
         if(id && product){
             
-            const data  = await DBStateSetOrderByClient(id,product);
-
-            res.status(200).json(data);
+            await DBStateSetOrderByClient(id,product);
+            const  order = await getSaleByIdDB(id);
+            const productsOrder =  [order];
+            res.status(200).json(productsOrder);
         }
 
        

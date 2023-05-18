@@ -5,7 +5,7 @@ const getSaleByIdDB = async (id) => {
 
         const order = await Order.findById(id)
             .populate("products.product", ["name", "state", "price", "user"])
-            .populate("products.product.user", ["firstname", "lastname"])
+            .populate("products.product.user")
             .lean()
         //console.log(order.products)
         if (order === null) {

@@ -1,10 +1,11 @@
-const getProductsAll = require('../../database/controllers/products/productGet/handlers/handlerGetAll');
+const getProductsAll = require('../../database/controllers/products/productGet/Handlers/handlerGetAll');
+// Por crash en deploy, ajuste en nombre de ruta lìnea1
 
 const getAllProductsAdmin = async (req, res) =>{
   
     try{ 
         
-        const products =  await getProductsAll(true);
+        let products =  await getProductsAll(true); //Ajuste pre-deploy: de const a let, porque en lìnea 17 se reasigna el valor de products
         const {page} = req.query;
         const amountXPage = 20;
 

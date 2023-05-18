@@ -4,6 +4,10 @@ import Link from "next/link";
 
 
 const ProductoCard = ({ producto }) => {
+
+    if (!producto) {
+        return <div>Cargando...</div>;
+      }
     
     return (
         <div className={styles.container}>

@@ -2,7 +2,7 @@ const LogAdmin = require("../../models/logadmin");
 const logActives = require("./handlers/logActives");
 const logBalanceToday = require("./handlers/logBalanceToday");
 const logReviews = require("./handlers/logReviews");
-const logQuestions = require("./handlers/logquestions");
+const logQuestions = require("./handlers/logQuestions"); //Por crash del deploy, ajusté el nombre de este archivo (de logquestions a logQuestions)
 const logAdminPostDay = require("./logAdminPostDay");
 
 const LogAdminController = async (valuemain, valuesecondary, query) => {

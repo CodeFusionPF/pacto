@@ -8,7 +8,7 @@ const getAllSalesDB = async () => {
                         .populate("products.product", ["name", "price"])
                         .order('-creationdate')
                         .lean();
-
+        console.log(orders);
         return orders;
     } catch (err){
         throw new Error (`Error al traer las ventas ${err}`);

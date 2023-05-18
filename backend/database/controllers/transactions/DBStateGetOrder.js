@@ -7,7 +7,7 @@ const DBStateGetOrder = async (idUser) => {
             .select("purchased")
             .populate("purchased")
             .lean()
-
+        console.log(userOrder);
         if (userOrder === null) {
             return false
         }

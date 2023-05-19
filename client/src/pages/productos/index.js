@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { setFilters, setOrderBy, setPage } from "@/redux/features/products/productsSlice";
 import ProductList from "@/components/ProductList";
-
+import HearderProducts from "@/components/HearderProducts";
 
 
 export default function Productos() {
@@ -48,7 +48,9 @@ export default function Productos() {
           
 
           {/* Sección para el título de la página de la página */}
-          <h1 className={styles.title}>Productos</h1>
+          {/* <h1 className={styles.title}>Productos</h1> */}
+          <HearderProducts></HearderProducts>
+          
           
           {/* Sección para el contenido ppal de la página */}
           <div className={styles.main}>

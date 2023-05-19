@@ -37,8 +37,8 @@ function WalletsList() {
                 {/* Encabezados */}
                 <div className='my-3 p-2 grid grid-cols-2 sm:grid-cols-4 items-center justify-between '>
                     <span className='font-semibold pl-20 hidden sm:grid sm:col-span-2'>Vendedor</span>
-                    <span className='font-semibold hidden sm:grid col-span-1'>Pendiente</span>
-                    <span className='font-semibold hidden sm:grid col-span-2'>A liberar</span>
+                    <span className='font-semibold hidden sm:grid col-span-1'>Import Pendiente</span>
+                    <span className='font-semibold hidden sm:grid col-span-1'>Importe a Liberar</span>
                 </div>
 
                 {/* Registros */}
@@ -67,7 +67,7 @@ function WalletsList() {
                                     </div>
 
                                     {/* Pendiente */}
-                                    <p className='text-orange-500 grid col-span-1 font-bold'>{`$ ${vendor.pendingBalance.toLocaleString()}`}</p>
+                                    <p className='text-orange-400 grid col-span-1 font-bold'>{`$ ${vendor.pendingBalance.toLocaleString()}`}</p>
 
                                     {/* A liberar */}
                                     <p className='text-verde grid col-span-1 font-bold'>{`$ ${vendor.receivableBalance.toLocaleString()}`}</p>  

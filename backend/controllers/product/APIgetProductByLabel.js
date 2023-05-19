@@ -4,6 +4,7 @@ const getProductByLabel = async (req, res) => {
   try {
     
     const label = req.query.label;
+    console.log(label);
 
     if (label) {
       const product = await DBProductGetLabel(label);

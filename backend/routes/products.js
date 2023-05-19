@@ -10,6 +10,7 @@ const middlewarePostNewProduct = require('../middlewares/productMiddleware');
 const {autoLogin} = require('../middlewares/autoLoginMiddleware');
 const {getAllProductsAdmin} = require('../controllers/product/APIAdminGetAllProds');
 const {checkIsAdmin} = require('../middlewares/checkAdminMiddleware');
+const getProductByLabel = require('../controllers/product/APIgetProductByLabel');
 
 // GET all products
 //router.get('/products', (req, res, next) => getAllProducts(req, res));
@@ -30,6 +31,9 @@ router.post('/product', middlewarePostNewProduct, (req, res) => postNewProduct(r
 
 //GET Product by name
 router.get('/productsname', (req, res, next) => getProductByName(req, res));
+
+// GET Product by label
+router.get('/productslabel', (req, res, next) => getProductByLabel(req, res));
 
 
 module.exports = router;

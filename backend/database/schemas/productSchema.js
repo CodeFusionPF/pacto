@@ -17,7 +17,7 @@ const productSchema = new Schema({
     },
     label: {
         type: String,
-        enum: ["oferta", "ninguno"]
+        enum: ["destacado", "oferta", "ninguno"]
     },
     Brand: String,
     stock: Number,

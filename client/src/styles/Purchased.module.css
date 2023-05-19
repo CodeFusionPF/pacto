@@ -1,0 +1,96 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto; 
+    width: 100%;
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 2px 0px rgba(92, 91, 91, 0.25);
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.confirmBtn {
+    background-color: #037BE4;
+    border-radius: 100px;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+
+
+.info_products span{
+ padding: 10px;
+ margin: 10px;
+}
+
+@media (max-width: 1220px){
+
+    .products {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+     }
+     
+     
+    .info_products {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 25px;
+    }
+    .info_products span{
+        width: 100px;
+    }
+    
+     .btn{
+        width: 100%;
+     }
+    .confirmBtn {
+        border: none;
+        border-radius: 0px;
+        width: 100%;
+      }
+
+
+      
+ }
+
+@media (max-width: 930px){
+
+    .products {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+     }
+  
+     .btn{
+        width: 100%;
+     }
+     .info_products span{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+     }
+    .confirmBtn{
+        border: none;
+        border-radius: 0px;
+        width: 100%;
+      }
+ }
+    
+ 
+       
+
+    

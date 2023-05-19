@@ -14,7 +14,7 @@ function Venta() {
             </div>
             <div className='flex justify-center items-center'>
                 <button 
-                className='bg-verde hover:bg-verde-light text-white font-semibold text-sm py-2 px-4 rounded mt-8'
+                className='bg-verde hover:bg-verde-light text-white font-semibold text-sm py-2 px-8 rounded mt-2'
                 type="button" 
                 onClick={() => router.back()}
                 >

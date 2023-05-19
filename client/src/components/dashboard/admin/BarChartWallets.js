@@ -10,14 +10,11 @@ import {
   Legend 
 } from "chart.js";
 
-// DATOS MOCKUP ///////////////////////////////////////////////////
-import { barChartData } from "../../../utils/dashboard/admin/data";
-
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 
-function BarChart({ colSpan="col-span-1" }) {
+function BarChartWallets({ barChartData, colSpan="col-span-1" }) {
   const [chartData, setChartData] = useState({
     datasets: [],
   });
@@ -26,24 +23,21 @@ function BarChart({ colSpan="col-span-1" }) {
 
   useEffect(() => {
     setChartData({
-      labels: barChartData.map((data) => data.day),
+      labels: barChartData.map((data) => data.label),
       datasets: [
         {
-          label: "Ventas Diarias $ (Millones))",
-          data: barChartData.map((data) => data.sumInMillions),
+          label: "Importes Totales de las Billeteras",
+          data: barChartData.map((data) => data.total),
           borderColor: "rgb(57, 177, 131)",
           backgroundColor: "rgba(57, 177, 131, 0.4)",
         }
       ]
     })
+    console.log("Chart Data: ", chartData.datasets);
     setChartOptions({
       plugins: {
         legend: {
           position: "top",
-        },
-        title: {
-          display: true,
-          text: "Ventas Diarias",
         },
       },
       maintainAspectRatio: false,
@@ -67,4 +61,4 @@ function BarChart({ colSpan="col-span-1" }) {
   )
 };
 
-export default BarChart;
+export default BarChartWallets;

@@ -4,7 +4,6 @@ import axios from 'axios';
 // Función para banear usuario
 export const banUser = async (id) => {
     const user_verified_token = localStorage.getItem("user_verified");
-    console.log("Token: " + user_verified_token);
     try {
         const response = await axios.put(`/banuser`, { "id": id }, {
             headers: {

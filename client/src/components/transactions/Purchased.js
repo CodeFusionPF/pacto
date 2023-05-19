@@ -1,6 +1,6 @@
+import styles from "../../styles/Purchased.module.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import styles from "../../styles/Orders.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateStateProduct } from "@/redux/features/transactions/transactionsSlice";
@@ -46,9 +46,10 @@ const Purchased = (props) => {
             <span>Cantidad: {props.amount}</span>
           </li>
         </ul>
-        
+        <div className={styles.btn}>
         {props.state === 'comprado' ? <button className={styles.confirmBtn} onClick={handleSetProductsState}>Recibido</button>: 
         <button className={styles.confirmBtn} onClick={handleOpenModal} >Calificar</button> }
+        </div>
       </div>
       {
           showModal && (

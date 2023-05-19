@@ -5,13 +5,17 @@ import ilustracion from "../../public/image/enConstruccion.png"
 const EnConstruccion = () => {
     return (
         <div className={styles.container}>
-            <h1>Página en Construcción</h1>
             <div className={styles.imgContainer}>
             <Image priority src={ilustracion} alt=""/>
             </div>
+            <p className="text-center text-2xl font-medium text-gray-600 mt-8 mb-1">
+                Aquí estamos construyendo
+            </p>
+            <p className="text-center text-2xl font-medium text-gray-600 mt-1 mb-4">
+                algo genial para ti...
+            </p>
         </div>
     )
-}
-
+};
 
 export default EnConstruccion;

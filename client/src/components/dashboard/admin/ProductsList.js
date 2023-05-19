@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { getProductsByPage } from '../../../api/productsApi';
+import { getProductsToAdminByPage } from '../../../api/productsApi';
 import { banProduct } from '../../../api/productsApi';
 import Pagination from './Pagination';
 import Modal from './Modal';
@@ -28,7 +28,7 @@ function ProductsList() {
     useEffect(() => {
         const fetchProducts = async () => {
             // Obtener los productos de la página actual
-            const { totalProducts, amountXPage, products} = await getProductsByPage(currentPage);
+            const { totalProducts, amountXPage, products} = await getProductsToAdminByPage(currentPage);
             setAmountXPage(amountXPage || 24);
             setProducts(products || []);
             setTotalProducts(totalProducts || 0);
@@ -81,7 +81,6 @@ function ProductsList() {
                     <span className='font-semibold hidden md:grid'>Estado</span>
                     <span className='font-semibold hidden lg:grid'>Categoría</span>
                     <span className='font-semibold hidden xl:grid'>SubCategoría</span>
-                    <span className='font-semibold hidden sm:grid'>Precio</span>
                     <span className='font-semibold hidden md:grid col-span-1'>Acciones</span>
                 </div>
 
@@ -98,9 +97,22 @@ function ProductsList() {
                                 >
                                     
                                     {/* Nombre */}
-                                    <div className='flex flex-col sm:flex-row items-center col-span-2 p-2 text-center sm:text-left'>
-                                        <div className='flex justify-center content-stretch items-stretch w-28 h-28 sm:w-16 sm:h-16 overflow-hidden rounded-md drop-shadow-md mb-2'>
-                                            <Image src={product.images[0]} alt={product.name} width="50" height="50" className='w-full h-full object-cover flex-1'/>
+                                    <div className='flex flex-col sm:flex-row items-center col-span-2 p-2 text-center sm:text-left relative'>
+                                        <div className='flex justify-center content-stretch items-stretch w-28 h-28 sm:w-16 sm:h-16 mb-2'>
+                                            {/* Rectángulo con el stock */}
+                                            <div className={`absolute -top-2 -left-4 z-10 w-8 h-8 text-white font-semibold text-center flex items-center justify-center rounded-md opacity-75
+                                            ${
+                                                product.stock === 0 ? "bg-gray-400" : "bg-verde"
+                                            }
+                                            `}>
+                                                <span className="text-xs">{product.stock}</span>
+                                            </div>
+                                            
+                                            {/* Imagen */}
+                                            <div className='flex justify-center content-stretch items-stretch w-28 h-28 sm:w-16 sm:h-16 overflow-hidden rounded-md drop-shadow-md mb-2'>
+                                                <Image src={product.images[0]} alt={product.name} width="50" height="50" className='w-full h-full object-cover flex-1'/>
+                                            </div>
+
                                         </div>
                                         <p className='font-medium pl-0 sm:pl-4 text-center'>{product.name}</p>
                                     </div>
@@ -144,8 +156,6 @@ function ProductsList() {
                                     {
                                         modalOpen && (
                                             <Modal
-                                            // PROVISORIAMENTE DESHABILITADO,hasta terminar de desarrollar el endpoint en el backend
-                                            // onConfirm={handleConfirmBlock}
                                             onConfirm={handleConfirmBlock}
                                             onClose={() => setModalOpen(false)}
                                             message={`¿Estás seguro de que quieres ${selectedProd.active === "bloqueado" ? "DESBLOQUEAR" : "BLOQUEAR"} el producto ${selectedProd.name}?`}
@@ -158,6 +168,11 @@ function ProductsList() {
                         })
                     }
                 </ul>
+
+                {/* Paginación */}
+                <div className='flex w-full items-center justify-center p-4'>
+                    <Pagination currentPage={products.length !== 0 ? currentPage : 0} totalPages={totalPages} handlePageChange={handlePageChange} />
+                </div>
             </div>
         </div>
     )

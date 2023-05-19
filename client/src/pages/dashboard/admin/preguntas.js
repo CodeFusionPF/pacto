@@ -1,10 +1,11 @@
 import Layout from '@/components/dashboard/admin/Layout.js';
+import EnConstruccion from '../../../components/enConstruccion';
 
 function Preguntas() {
   return (
     <>
       <Layout title="Preguntas">
-        <h1>Preguntas</h1>
+        <EnConstruccion />
       </Layout>
     </>
   )

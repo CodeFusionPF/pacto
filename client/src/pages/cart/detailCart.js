@@ -1,10 +1,10 @@
-
+import style from "../../styles/cart/car.module.css";
 import Layout from "../../components/layout";
 import Link from "next/link";
-import style from "../../styles/cart/car.module.css";
 import Image from "next/image";
 import ProductoCard from "../../components/cart/productCart";
 import { useSelector } from "react-redux";
+import notFound from "../../../public/image/NotFound.png"
 
 export default function car() {
 
@@ -25,20 +25,6 @@ export default function car() {
               
               return (<ProductoCard name= {name} images={images} price={price} ammount={item.ammount} total={totalPrice}/>)
             })}
-
-            {/*  Costo envío*/}
-            {/* <div className={style.shipping}>
-              <h5>Costo de envío</h5>
-              <p>$500</p>
-            </div> */}
-
-             {/* total producto */}
-             {/* <div className={style.shipping}>
-              <h5>Total con envío</h5>
-              <p>{`$ ${totalPrice}`}</p>
-            </div> */}
-            
-            {/* Sección para los botones de submit y cancelar */}
             <div className={style.buttons}>
                 <Link href="/">
                     <button className={style.buttonCancel}>Cancelar</button>
@@ -49,7 +35,24 @@ export default function car() {
             </div>
           </div>    
      
-      </Layout>: <p>Cargando carrito...</p> }
+      </Layout>:
+      //carrito vacio
+      <Layout>
+      <div className={style.container}>
+          <p className={style.titleCart}>Carrito de compras</p><hr/>
+          <Image src={notFound}/>
+          <div className={style.buttons}>
+              <Link href="/productos">
+                  <button className={style.buttonCancel}>Agregar productos</button>
+              </Link>
+          </div>
+        </div>    
+   
+    </Layout>
+      
+      
+      
+      }
       
     </>
 )}

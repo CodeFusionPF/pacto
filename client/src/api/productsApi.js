@@ -43,6 +43,17 @@ export const getProductsToAdminByPage = async (page) => {
   }
 };
 
+// Función para obtener todos los productos destacados
+export const getDestacados = async () => {
+  try {
+    const response = await axios.get(`/productslabel?label=destacado`);
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener los productos destacados:', error);
+    throw error;
+  }
+};
+
 
 // Función para banear producto
 export const banProduct = async (id) => {

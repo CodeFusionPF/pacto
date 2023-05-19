@@ -26,13 +26,14 @@ function BarChartWallets({ barChartData, colSpan="col-span-1" }) {
       labels: barChartData.map((data) => data.label),
       datasets: [
         {
-          label: "Importes de totales de las wallets",
+          label: "Importes Totales de las Billeteras",
           data: barChartData.map((data) => data.total),
           borderColor: "rgb(57, 177, 131)",
           backgroundColor: "rgba(57, 177, 131, 0.4)",
         }
       ]
     })
+    console.log("Chart Data: ", chartData.datasets);
     setChartOptions({
       plugins: {
         legend: {
@@ -42,7 +43,7 @@ function BarChartWallets({ barChartData, colSpan="col-span-1" }) {
       maintainAspectRatio: false,
       responsive: true,
     })
-    }, []);
+    }, [barChartData]);
 
 
   return (

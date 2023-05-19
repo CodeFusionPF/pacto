@@ -49,7 +49,7 @@ function BarChart({ colSpan="col-span-1" }) {
       maintainAspectRatio: false,
       responsive: true,
     })
-    }, []);
+    }, [barChartData]);
 
 
   return (

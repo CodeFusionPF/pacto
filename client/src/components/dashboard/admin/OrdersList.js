@@ -22,11 +22,11 @@ function OrdersList() {
             {/* Tarjetas y gráfica */}
             <div className='col-span-1 2xl:col-span-2 grid grid-cols-1 2xl:grid-cols-2 gap-4 h-fit'>
                 <CardBasic data={`$ ${cardsData.sumSalesToday.toLocaleString()}`} title="Ventas de Hoy" dataColor='text-verde' />
-                <CardBasic data={`$ ${(2548500).toLocaleString()}`} title='Próximamente...' />
-                <CardBasic data={`$ ${(37849).toLocaleString()}`} title='Próximamente...' />
-                <CardBasic data={`# ${(48577).toLocaleString()}`} title='Próximamente...' />
-                <CardBasic data={`# ${(35820).toLocaleString()}`} title='Próximamente...' />
-                <CardBasic data={`# ${(15470).toLocaleString()}`} title='Próximamente...' />
+                <CardBasic data={`$ ${(2548500).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400" />
+                <CardBasic data={`$ ${(37849).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400"/>
+                <CardBasic data={`# ${(48577).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400"/>
+                <CardBasic data={`# ${(35820).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400"/>
+                <CardBasic data={`# ${(15470).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400"/>
 
                 <BarChart colSpan='col-span-1 2xl:col-span-2' />
             </div>

@@ -14,17 +14,16 @@ function WalletsList() {
     const [vendors, setVendors] = useState([]);
     const [totalPending, setTotalPending] = useState(0);    
     const [totalReceivable, setTotalReceivable] = useState(0);
-
-    const barChartData = [
+    const [barChartData, setBarChartData] = useState([
         {
             label: "A liberar",
-            total: {totalReceivable},
+            total: 0,
         },
         {
             label: "Pendiente",
-            total: {totalPending},
+            total: 0,
         }
-    ];
+    ]); 
     
 
     useEffect(() => {
@@ -34,10 +33,19 @@ function WalletsList() {
             setVendors(wallets || []);
             setTotalPending(totalPendingBalance || 0);
             setTotalReceivable(totalReceivableBalance || 0);
+            setBarChartData([
+                {
+                    label: "A liberar",
+                    total: totalReceivableBalance || 0,
+                },
+                {
+                    label: "Pendiente",
+                    total: totalPendingBalance || 0,
+                }
+            ]);
         };
 
         fetchVendors();
-        console.log(vendors);
     }, []);
 
 
@@ -50,10 +58,10 @@ function WalletsList() {
             <div className='col-span-1 2xl:col-span-2 grid grid-cols-1 2xl:grid-cols-2 gap-4 h-fit'>
                 <CardBasic data={`$ ${totalReceivable.toLocaleString()}`} title="Total a Liberar" dataColor='text-verde' />
                 <CardBasic data={`$ ${totalPending.toLocaleString()}`} title='Total Pendiente' />
-                <CardBasic data={`$ ${(37849).toLocaleString()}`} title='Próximamente...' />
-                <CardBasic data={`# ${(48577).toLocaleString()}`} title='Próximamente...' />
-                <CardBasic data={`# ${(35820).toLocaleString()}`} title='Próximamente...' />
-                <CardBasic data={`# ${(15470).toLocaleString()}`} title='Próximamente...' />
+                <CardBasic data={`$ ${(37849).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400" />
+                <CardBasic data={`# ${(48577).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400" />
+                <CardBasic data={`# ${(35820).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400" />
+                <CardBasic data={`# ${(15470).toLocaleString()}`} title='Próximamente...' dataColor="text-gray-400" />
 
                 <BarChartWallets colSpan='col-span-1 2xl:col-span-2' barChartData={barChartData} />
             </div>
@@ -63,7 +71,7 @@ function WalletsList() {
                 {/* Encabezados */}
                 <div className='my-3 p-2 grid grid-cols-2 sm:grid-cols-4 items-center justify-between '>
                     <span className='font-semibold pl-20 hidden sm:grid sm:col-span-2'>Vendedor</span>
-                    <span className='font-semibold hidden sm:grid col-span-1'>Import Pendiente</span>
+                    <span className='font-semibold hidden sm:grid col-span-1'>Importe Pendiente</span>
                     <span className='font-semibold hidden sm:grid col-span-1'>Importe a Liberar</span>
                 </div>
 
@@ -93,7 +101,7 @@ function WalletsList() {
                                     </div>
 
                                     {/* Pendiente */}
-                                    <p className='text-orange-400 grid col-span-1 font-bold'>{`$ ${vendor.pendingBalance.toLocaleString()}`}</p>
+                                    <p className='grid col-span-1 text-lila'>{`$ ${vendor.pendingBalance.toLocaleString()}`}</p>
 
                                     {/* A liberar */}
                                     <p className='text-verde grid col-span-1 font-bold'>{`$ ${vendor.receivableBalance.toLocaleString()}`}</p>  
